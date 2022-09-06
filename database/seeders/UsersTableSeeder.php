@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\PersonalDetail;
 use App\Models\BusinessDetail;
+use App\Models\Product;
 
 
 
@@ -43,6 +44,21 @@ class UsersTableSeeder extends Seeder
 
         $details = [
             [
+                'user_id'             => '1',
+                'name'                => 'Admin',
+                'mobile_number'                =>    null,
+                'dob'                =>    null,
+                'civil_status'                =>    null,
+                'citizenship'                =>    null,
+                'address'   =>   null,
+                'province_code'   =>   null,
+                'city_municipality_code'   =>   null,
+                'source_of_fund'   => null,
+                
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
                 'user_id'             => '2',
                 'name'                => 'Johnpaul Client',
                 'mobile_number'                => '09776668820',
@@ -74,10 +90,45 @@ class UsersTableSeeder extends Seeder
             ],
         ];
 
+
+        $products = [
+            [
+                'user_id'             => '2',
+                'image'             => '2_Gaming Chair.jpg',
+                'product_id'             => 'PRODUCT4400702',
+                'title'             => 'Gaming Chair',
+                'price'             => '500',
+                'qty'             => '5',
+                'category'             => 'Computer Item',
+                'expiration'             => null,
+                'description'             => 'test',
+                'status'             => 'APPROVED',
+                
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'user_id'             => '2',
+                'image'             => '2_Mouse.png',
+                'product_id'             => 'PRODUCT4411952',
+                'title'             => 'Mouse',
+                'price'             => '150',
+                'qty'             => '5',
+                'category'             => 'Computer Item',
+                'expiration'             => null,
+                'description'             => 'test',
+                'status'             => 'APPROVED',
+                
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+        ];
+
         
         User::insert($accounts);
         PersonalDetail::insert($details);
         BusinessDetail::insert($bdetails);
+        Product::insert($products);
      
         
     }

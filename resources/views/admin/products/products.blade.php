@@ -65,7 +65,14 @@
                             <td>{{$product->product_id ?? ''}}</td>
                             <td>{{$product->title ?? ''}}</td>
                             <td>{{$product->category ?? ''}}</td>
-                            <td> <span class="badge badge-warning">{{$product->status ?? ''}}</span></td>
+                            <td> <span class="badge  
+                                    @if($product->status == 'PENDING')
+                                        badge-warning 
+                                    @elseif($product->status == 'APPROVED')
+                                        badge-primary
+                                    @endif">
+                                        {{$product->status ?? ''}}
+                                 </span></td>
                             <td>{{$product->created_at ?? ''}}</td>
                         </tr>
                         @endforeach

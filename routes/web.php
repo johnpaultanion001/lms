@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Guest;
 use App\Http\Controllers\Auth as Login;
 
 Route::get('/', function () {
@@ -17,7 +18,12 @@ Route::get('/facebook/login', [Login\LoginController::class, 'facebookLogin'])->
 Route::get('verify/resend', [Login\TwoFactorController::class, 'resend'])->name('verify.resend');
 Route::resource('verify', Login\TwoFactorController::class)->only(['index', 'store']);
 
-Route::prefix('admin')->as('admin.')->middleware(['auth', 'twofactor'])->group(function() {
+Route::get('/marketplace', [Guest\GuestController::class, 'marketplace'])->name('marketplace');
+Route::get('/unionbank', [Guest\GuestController::class, 'unionbank'])->name('unionbank');
+Route::get('/unionbank_payment', [Guest\GuestController::class, 'unionbank_payment'])->name('unionbank.payment');
+Route::get('/unionbank_confirm', [Guest\GuestController::class, 'unionbank_confirm'])->name('unionbank.confirm');
+
+Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
 
     //Client
     Route::get('/profile/provinces', [Admin\ClientController::class, 'province'])->name('province');

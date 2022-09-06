@@ -52,7 +52,12 @@
                     <tr>
                         <th scope="row">Status</th>
                         <th>
-                            <button class="btn btn-warning btn-sm btn-wd font-weight-bold" id="action_status">{{$product->status ?? ''}}</button>
+                            <button class="btn btn-sm btn-wd font-weight-bold
+                            @if($product->status == 'PENDING')
+                                    btn-warning
+                            @elseif($product->status == 'APPROVED')
+                                    btn-primary
+                            @endif" id="action_status">{{$product->status ?? ''}}</button>
                         </th>
                     </tr>
                     <tr>
@@ -68,31 +73,31 @@
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row">price</th>
+                        <th scope="row">Price</th>
                         <th>
                                 {{$product->price ?? ''}}
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row">qty</th>
+                        <th scope="row">Qty</th>
                         <th>
                                 {{$product->qty ?? ''}}
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row">category</th>
+                        <th scope="row">Category</th>
                         <th>
                                 {{$product->category ?? ''}}
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row">expiration</th>
+                        <th scope="row">Expiration</th>
                         <th>
                                 {{$product->expiration ?? ''}}
                         </th>
                     </tr>
                     <tr>
-                        <th scope="row">description</th>
+                        <th scope="row">Description</th>
                         <th>
                                 {{$product->description ?? ''}}
                         </th>
@@ -167,7 +172,7 @@ $(document).ready(function(){
         var qrtext = $('#qrtext').text();
         
         var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: "http://jindo.dev.naver.com/collie",
+            text: qrtext,
             width: 128,
             height: 128,
             colorDark : "#000000",
@@ -175,15 +180,7 @@ $(document).ready(function(){
             correctLevel : QRCode.CorrectLevel.H
         });
 
-        // $('#image_product').watermark({
-        //     text:'GOOGLE.COM',
-        //     textWidth: 100,
-        //     outputType:'jpeg',
-        //     done:function (imgURL) {
-        //         img = imgURL;
-        //     },
-        // });
-
+        
         
 
 
