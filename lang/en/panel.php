@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'FIREBASE LARAVEL',
+    'site_title' => 'EKYC DTI',
 ];

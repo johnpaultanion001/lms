@@ -22,6 +22,8 @@ Route::get('/marketplace', [Guest\GuestController::class, 'marketplace'])->name(
 Route::get('/unionbank', [Guest\GuestController::class, 'unionbank'])->name('unionbank');
 Route::get('/unionbank_payment', [Guest\GuestController::class, 'unionbank_payment'])->name('unionbank.payment');
 Route::get('/unionbank_confirm', [Guest\GuestController::class, 'unionbank_confirm'])->name('unionbank.confirm');
+Route::get('/search', [Guest\GuestController::class, 'search'])->name('search');
+Route::get('/search/{product}', [Guest\GuestController::class, 'search_product'])->name('search.product');
 
 Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
 
@@ -42,7 +44,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
     Route::post('/client/{user}', [Admin\AdminController::class, 'set_status'])->name('set_status');
     Route::get('/users', [Admin\AdminController::class, 'users'])->name('users');
     Route::resource('products', Admin\ProductController::class)->only('show');
-    Route::get('/product/watermark', [Admin\ProductController::class, 'watermark'])->name('watermark');
+    Route::post('/products/{product}', [Admin\ProductController::class, 'product'])->name('product');
 
 });
 

@@ -168,29 +168,17 @@
 <script>
 $(document).ready(function(){
     $(document).on('click', '#action_status', function(){
-        var img = $('#image_product').attr('src');
-        var qrtext = $('#qrtext').text();
-        
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: qrtext,
-            width: 128,
-            height: 128,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
-
-        
-        
-
+        $('#myModal').modal('show');
+        $('#myForm')[0].reset();
+        $('.form-control').removeClass('is-invalid');
 
     });
     $('#myForm').on('submit', function(event){
         event.preventDefault();
         $('.form-control').removeClass('is-invalid')
         
-        var action_url = '{{ route("admin.client", ":user") }}';
-            action_url = action_url.replace(':user', $('#hidden_id').val());
+        var action_url = '{{ route("admin.product", ":product") }}';
+            action_url = action_url.replace(':product', $('#hidden_id').val());
 
         var type = "POST";
 

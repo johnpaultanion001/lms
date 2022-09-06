@@ -95,7 +95,7 @@ class UsersTableSeeder extends Seeder
             [
                 'user_id'             => '2',
                 'image'             => '2_Gaming Chair.jpg',
-                'product_id'             => 'PRODUCT4400702',
+                'product_id'             => 'PROD4400702',
                 'title'             => 'Gaming Chair',
                 'price'             => '500',
                 'qty'             => '5',
@@ -109,8 +109,8 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'user_id'             => '2',
-                'image'             => '2_Mouse.png',
-                'product_id'             => 'PRODUCT4411952',
+                'image'             => '2_Mouse.jpg',
+                'product_id'             => 'PROD4411952',
                 'title'             => 'Mouse',
                 'price'             => '150',
                 'qty'             => '5',

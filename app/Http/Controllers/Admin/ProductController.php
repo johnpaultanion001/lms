@@ -22,49 +22,40 @@ class ProductController extends Controller
     {
         $product = Product::where('product_id', $product)->first();
         if($product){
-            header('content-type: image/jpeg');
-            $sourceS = "public/assets/qr/test.png"; // SOURCE IMAGE
+            // header('content-type: image/jpeg');
+            // $sourceS = "public/assets/qr/test.png"; // SOURCE IMAGE
+            // $sourceW = "public/assets/qr/PRODUCT4411952.png"; // WATERMARK IMAGE
+            // $sourcedti = "public/assets/qr/dti.png"; // WATERMARK IMAGE
+            // $target = "public/assets/qr/test1.png"; // WATERMARKED IMAGE
+            // $image = imagecreatefrompng($sourceS);
+            // $imageSize = getimagesize($sourceS);
+            // $watermark = imagecreatefrompng($sourceW);
+            // $watermarkdti = imagecreatefrompng($sourcedti);
+            // $watermark_o_width = imagesx($watermark);
+            // $watermark_o_height = imagesy($watermark);
+            // $watermark_o_widthdti = imagesx($watermarkdti);
+            // $watermark_o_heightdti = imagesy($watermarkdti);
+            // $newWatermarkWidth = $imageSize[0]-760;
+            // $newWatermarkHeight = $watermark_o_height * $newWatermarkWidth / $watermark_o_width;
 
-            $sourceW = "public/assets/qr/PRODUCT4411952.png"; // WATERMARK IMAGE
-            $sourcedti = "public/assets/qr/dti.png"; // WATERMARK IMAGE
-
-            $target = "public/assets/qr/test1.png"; // WATERMARKED IMAGE
-         
-
-            $image = imagecreatefrompng($sourceS);
-            $imageSize = getimagesize($sourceS);
+            // $newWatermarkWidthdti = $imageSize[0]-760;
+            // $newWatermarkHeightdti = $watermark_o_heightdti * $newWatermarkWidthdti / $watermark_o_widthdti;
             
-            $watermark = imagecreatefrompng($sourceW);
-            $watermarkdti = imagecreatefrompng($sourcedti);
+            // imagecopyresized(
+            //     $image, $watermark, $imageSize[0]/100 - $newWatermarkWidth/100, $imageSize[1]/6 - 
+            //     $newWatermarkHeight/2, 0, 0, $newWatermarkWidth, $newWatermarkHeight,
+            //     imagesx($watermark), imagesy($watermark));
             
-            $watermark_o_width = imagesx($watermark);
-            $watermark_o_height = imagesy($watermark);
-
-            $watermark_o_widthdti = imagesx($watermarkdti);
-            $watermark_o_heightdti = imagesy($watermarkdti);
-            
-            $newWatermarkWidth = $imageSize[0]-760;
-            $newWatermarkHeight = $watermark_o_height * $newWatermarkWidth / $watermark_o_width;
-
-            $newWatermarkWidthdti = $imageSize[0]-760;
-            $newWatermarkHeightdti = $watermark_o_heightdti * $newWatermarkWidthdti / $watermark_o_widthdti;
-            
-            imagecopyresized(
-                $image, $watermark, $imageSize[0]/100 - $newWatermarkWidth/100, $imageSize[1]/6 - 
-                $newWatermarkHeight/2, 0, 0, $newWatermarkWidth, $newWatermarkHeight,
-                imagesx($watermark), imagesy($watermark));
-            
-            imagecopyresized(
-                $image, $watermarkdti, $imageSize[0]/100 - $newWatermarkWidthdti/100, $imageSize[1]/2.5 - 
-                $newWatermarkHeightdti/2, 0, 0, $newWatermarkWidthdti, $newWatermarkHeightdti,
-                imagesx($watermarkdti), imagesy($watermarkdti));
+            // imagecopyresized(
+            //     $image, $watermarkdti, $imageSize[0]/100 - $newWatermarkWidthdti/100, $imageSize[1]/2.5 - 
+            //     $newWatermarkHeightdti/2, 0, 0, $newWatermarkWidthdti, $newWatermarkHeightdti,
+            //     imagesx($watermarkdti), imagesy($watermarkdti));
             
             
-            imagejpeg($image, $target);
+            // imagejpeg($image, $target);
             
-            imagedestroy($image);
-            imagedestroy($watermark);
-
+            // imagedestroy($image);
+            // imagedestroy($watermark);
 
             return view('admin.products.product', compact('product')); 
         }else{
@@ -95,7 +86,7 @@ class ProductController extends Controller
 
         Product::create([
             'user_id'     => auth()->user()->id,
-            'product_id' => 'PRODUCT'.substr(time(), 4).auth()->user()->id,
+            'product_id' => 'PROD'.substr(time(), 4).auth()->user()->id,
             'title'     => $request->input('title'),
             'category'     => $request->input('category'),
             'price'     => $request->input('price'),
@@ -125,12 +116,15 @@ class ProductController extends Controller
     {
         //
     }
-    public function watermark()
+    public function product(Request $request, Product $product)
     {
-        $img = imagecreatefromjpeg("public/assets/product_image/test.jpg");
-        $red = imagecolorallocatealpha($img, 255, 0, 0);
-        imagettftext($img, 18, 0, 0, 24, $red, "PATH\FONT.TTF", "COPYRIGHT");
-        imagejpeg($img, "WATERMARKED.JPG", 60);
+        if($request->input('status') == 'APPROVED'){
+            
+        }
+        $product->update([
+            'status' => $request->input('status'),
+        ]);
+        return response()->json(['success' => 'Successfully updated!']);
     }
 
 
