@@ -18,6 +18,7 @@ class Product extends Model
         'category',
         'expiration',
         'description',
+        'condition',
         'status',
     ];
 

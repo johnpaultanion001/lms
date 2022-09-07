@@ -103,13 +103,14 @@ class UsersTableSeeder extends Seeder
                 'expiration'             => null,
                 'description'             => 'test',
                 'status'             => 'APPROVED',
-                
+                'condition'             => 'New',
+
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
                 'user_id'             => '2',
-                'image'             => '2_Mouse.jpg',
+                'image'             => '2_Mouse.png',
                 'product_id'             => 'PROD4411952',
                 'title'             => 'Mouse',
                 'price'             => '150',
@@ -118,7 +119,8 @@ class UsersTableSeeder extends Seeder
                 'expiration'             => null,
                 'description'             => 'test',
                 'status'             => 'APPROVED',
-                
+                'condition'             => 'New',
+
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],

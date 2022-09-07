@@ -52,12 +52,18 @@
                     <tr>
                         <th scope="row">Status</th>
                         <th>
-                            <button class="btn btn-sm btn-wd font-weight-bold
-                            @if($product->status == 'PENDING')
-                                    btn-warning
-                            @elseif($product->status == 'APPROVED')
-                                    btn-primary
-                            @endif" id="action_status">{{$product->status ?? ''}}</button>
+                            @if(auth()->user()->roles()->pluck('id')->implode(', ') == '1')
+                                <button class="btn btn-sm btn-wd font-weight-bold
+                                @if($product->status == 'PENDING')
+                                        btn-warning
+                                @elseif($product->status == 'APPROVED')
+                                        btn-primary
+                                @endif" id="action_status">{{$product->status ?? ''}}</button>
+                            @else
+                                {{$product->status ?? ''}}
+                            @endif
+                            
+                          
                         </th>
                     </tr>
                     <tr>

@@ -1,12 +1,19 @@
 <div id="product" class="product-details">
-    <button id="prod-close"><i class="fa-solid fa-circle-xmark"></i></button>
+    <button id="prod-close" style="z-index: 2;"><i class="fa-solid fa-circle-xmark"></i></button>
     <div class="container-fluid g-0">
         <div class="row g-0 h-100">
             <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9">
                 <div class="d-flex justify-content-center align-items-center h-100">
-                    <img src="https://i.imgur.com/sk5VTNb.jpg" class="prod-image d-block mx-auto" alt="">
+                        <div style="100%">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/DTI_Logo_2019.png/1095px-DTI_Logo_2019.png" class="dti_logo_img" alt="">
+                            <img src="https://i.imgur.com/sk5VTNb.jpg" class="prod-image" style="width: 90vh !important;" alt="">
+                            <h6 class="product_id_img" style=""></h6>
+                        </div>
+                        
                 </div>
+                
             </div>
+            
             <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
                 <div class="description-bar h-100">
                     <div class="details-cont p-4">
