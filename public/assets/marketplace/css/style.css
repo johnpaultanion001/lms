@@ -402,6 +402,14 @@ h3{
     color: #626262;
 }
 
+img.image.image-guest {
+    max-height: 400px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
 @media screen and (max-width: 767.98px) {
     .product-details {
         overflow: auto;

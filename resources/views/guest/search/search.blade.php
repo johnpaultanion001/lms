@@ -6,7 +6,6 @@
        
         <div class="col-12 col-sm-7 col-md-9 col-lg-9 col-xl-9 col-xxl-10 mx-auto">
             <div class="content px-4 py-4 py-sm-5">
-                
                     <div class="row g-1">
                         <div class="col px-2">
                             <h2>Search product ID</h2>
@@ -15,117 +14,93 @@
                     <div class="row g-1 py-2">
                         <div class="card">
                             <div class="card-body">
-                                    <div class="form-group">
-                                        <div class="col-12">
-                                            <input type="text" class="form-control" id="search" placeholder="Search ID" >
-                                        </div>
+                                <div class="form-group">
+                                    <div class="col-12">
+                                        <input type="text" class="form-control" id="search" placeholder="Search ID" >
                                     </div>
+                                </div>
                             </div>
                         </div>
                        <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">Product Details</th>
-                                                <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Product Id</th>
-                                                    <th class="product_id"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Image</th>
-                                                    <th>
-                                                        <img class="image" src="" alt="image" width="200" height="200" >
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Title</th>
-                                                    <th class="title"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Price</th>
-                                                    <th class="price"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Qty</th>
-                                                    <th class="qty"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Category</th>
-                                                    <th class="category"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Expiration</th>
-                                                    <th class="expiration"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Description</th>
-                                                    <th class="description"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Created At</th>
-                                                    <th class="created_at"></th>
-                                                </tr>
-                                                <tr>
-                                                    <div class="row">
-                                                        <th scope="row">Status</th>
-                                                        <th class="status">
-                                                            
-                                                        </th>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img class="image image-guest" src="http://localhost/dti-main/public/assets/product_image/2_Gaming%20Chair.jpg" alt="image">
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="product_id"></p>
+                                                <p class="title"></p>
+                                                <p class="status"></p>
+                                                <p>₱<span class="price"></span></p>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6 my-2">
+                                                        <p class="label">Qty</p>
+                                                        <p class="qty"></p>
                                                     </div>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                    <div class="col-12 col-md-6 my-2">
+                                                        <p class="label">Category</p>
+                                                        <p class="category"></p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 my-2">
+                                                        <p class="label">Created At</p>
+                                                        <p class="created_at"></p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 my-2">
+                                                        <p class="label">Expiration</p>
+                                                        <p class="expiration"></p>
+                                                    </div>
+                                                    <div class="col-12 my-2">
+                                                        <p class="label">Description</p>
+                                                        <p class="description"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                <th scope="col">Owner Details / Business Details</th>
-                                                <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Name</th>
-                                                    <th class="name"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Email</th>
-                                                    <th class="email"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Mobile Number</th>
-                                                    <th class="mobile_number"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Address</th>
-                                                    <th class="address"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <th></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Business Name</th>
-                                                    <th class="bn"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Business Phone Number</th>
-                                                    <th class="bpn"></th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Business Address</th>
-                                                    <th class="ba"></th>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h5>Owner Details / Business Details</h5>
+                                            </div>
+                                            <div class="col-12 col-md-4 my-2">
+                                                <p class="label">Name</p>
+                                                <p class="name"></p>
+                                            </div>
+                                            <div class="col-12 col-md-4 my-2">
+                                                <p class="label">Email</p>
+                                                <p class="email"></p>
+                                            </div>
+                                            <div class="col-12 col-md-4 my-2">
+                                                <p class="label">Mobile Number</p>
+                                                <p class="mobile_number"></p>
+                                            </div>
+                                            <div class="col-12 col-md-12 my-2">
+                                                <p class="label">Address</p>
+                                                <p class="address"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-4 my-2">
+                                                <p class="label">Business Name</p>
+                                                <p class="bn"></p>
+                                            </div>
+                                            <div class="col-12 col-md-4 my-2">
+                                                <p class="label">Business Phone Number</p>
+                                                <p class="bpn"></p>
+                                            </div>
+                                            <div class="col-12 col-md-4 my-2">
+                                                <p class="label">Business Address</p>
+                                                <p class="ba"></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 
