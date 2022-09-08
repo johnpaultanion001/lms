@@ -36,12 +36,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated =  Validator::make($request->all(), [
-            'title'   => ['required'],
-            'category'   => ['required'],
-            'price'   => ['required'],
-            'qty'   => ['required'],
-            'image'  => ['required' , 'max:2040'],
-            'expiration' => ['nullable','date' , 'after:today'],
+            'title'   => ['nullable'],
+            'category'   => ['nullable'],
+            'price'   => ['nullable'],
+            'qty'   => ['nullable'],
+            'image'  => ['nullable' , 'max:2040'],
+            'expiration' => ['nullable','date'],
         ]);
         if ($validated->fails()) {
             return response()->json(['errors' => $validated->errors()]);
@@ -63,6 +63,7 @@ class ProductController extends Controller
             'expiration'     => $request->input('expiration'),
             'image'     => $image,
             'description'     => $request->input('description'),
+            'status'    => 'PENDING',
         ]);
 
         return response()->json(['success' => 'Successfully created!']);
@@ -87,9 +88,6 @@ class ProductController extends Controller
     }
     public function product(Request $request, Product $product)
     {
-        if($request->input('status') == 'APPROVED'){
-            
-        }
         $product->update([
             'status' => $request->input('status'),
         ]);

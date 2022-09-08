@@ -37,11 +37,11 @@
                     <h3 class="wizard-title font-weight-bold">REGISTRATION PROCESS</h3>
                     @if(auth()->user()->isSubmit == 1)
                         @if(auth()->user()->status == 'PENDING')
-                            <h6 class="text-success mt-2">* Wait for the admin responce to verify your account.</h6>
+                            <h5 class="text-success mt-2">* Wait for the admin responce to verify your account.</h5>
                         @elseif(auth()->user()->status == 'APPROVED')
-                            <h6 class="text-success mt-2">{{auth()->user->remarks ?? ''}}</h6>
+                            <h5 class="text-success mt-2">{{auth()->user->remarks ?? ''}}</h5>
                         @elseif(auth()->user()->status == 'DEACTIVATED')
-                            <h6 class="text-success mt-2">{{auth()->user->remarks ?? ''}}</h6>
+                            <h5 class="text-success mt-2">{{auth()->user->remarks ?? ''}}</h5>
                         @endif
                     @endif
                 </div>
@@ -321,12 +321,22 @@
                                             </span>
                                         </div> 
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Business Permit: <span class="text-danger">*</span></label>
                                             <input type="file" class="form-control" name="business_permit" id="business_permit">
                                             <span class="invalid-feedback" role="alert">
                                                 <strong id="error-business_permit"></strong>
+                                            </span>
+                                            <a href="{{ asset('public/assets/business_permit') }}/{{auth()->user()->business_detail->business_permit ?? ''}}" target="_blank">{{auth()->user()->business_detail->business_permit ?? ''}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Valid ID: <span class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" name="valid_id" id="valid_id">
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong id="error-valid_id"></strong>
                                             </span>
                                             <a href="{{ asset('public/assets/business_permit') }}/{{auth()->user()->business_detail->business_permit ?? ''}}" target="_blank">{{auth()->user()->business_detail->business_permit ?? ''}}</a>
                                         </div>
@@ -475,7 +485,6 @@ $(document).ready(function(){
     }else{
         $('#action_button').html('Next');
     }
-
     $('select[name="province_code"]').on("change", function(event){
         var province = $(this).val(); 
         $.ajax({

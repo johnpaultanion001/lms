@@ -52,21 +52,21 @@ class ClientController extends Controller
                     $validation_image =  ['max:2040'];
                 }
                 else{
-                    $validation_image =  ['required', 'max:2040'];
+                    $validation_image =  ['nullable', 'max:2040'];
                 }
                 $validated =  Validator::make($request->all(), [
-                    'email'   => ['required'],
-                    'mobile_number'   => ['required', 'string', 'min:8','max:11'],
-                    'address'   => ['required'],
-                    'province_code'   => ['required'],
-                    'city_municipality_code'   => ['required'],
-                    'name'   => ['required'],
-                    'dob' =>['required', 'date' , 'before:today'],
-                    'civil_status' => ['required'],
-                    'citizenship' => ['required'],
-                    'source_of_fund' => ['required'],
+                    'email'   => ['nullable'],
+                    'mobile_number'   => ['nullable', 'string', 'min:8','max:11'],
+                    'address'   => ['nullable'],
+                    'province_code'   => ['nullable'],
+                    'city_municipality_code'   => ['nullable'],
+                    'name'   => ['nullable'],
+                    'dob' =>['nullable', 'date' , 'before:today'],
+                    'civil_status' => ['nullable'],
+                    'citizenship' => ['nullable'],
+                    'source_of_fund' => ['nullable'],
                     'image' => $validation_image,
-                    'facebook_link' => ['required'],
+                    'facebook_link' => ['nullable'],
                 ]);
                 if ($validated->fails()) {
                     return response()->json(['errors' => $validated->errors()]);
@@ -78,16 +78,16 @@ class ClientController extends Controller
                     $validation_business_permit =  ['max:2040'];
                 }
                 else{
-                    $validation_business_permit =  ['required', 'max:2040'];
+                    $validation_business_permit =  ['nullable', 'max:2040'];
                 }
                 $validated =  Validator::make($request->all(), [
-                    'business_industry'   => ['required'],
-                    'business_name'   => ['required'],
-                    'business_address'   => ['required'],
-                    'business_phone'   => ['required', 'string'],
-                    'business_phone_number' =>  ['required', 'string', 'min:8','max:11'],
-                    'business_province_code'   => ['required'],
-                    'business_city_municipality_code'   => ['required'],
+                    'business_industry'   => ['nullable'],
+                    'business_name'   => ['nullable'],
+                    'business_address'   => ['nullable'],
+                    'business_phone'   => ['nullable', 'string'],
+                    'business_phone_number' =>  ['nullable', 'string', 'min:8','max:11'],
+                    'business_province_code'   => ['nullable'],
+                    'business_city_municipality_code'   => ['nullable'],
                     'business_permit' => $validation_business_permit,
                 ]);
                 if ($validated->fails()) {

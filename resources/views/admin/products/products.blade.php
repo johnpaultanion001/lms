@@ -108,7 +108,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="control-label text-uppercase h6" >Title: <span class="text-danger">*</span></label>
-                                <input type="text" name="title" id="title" class="form-control">
+                                <input type="text" name="title" id="title" class="form-control" value="CCTV">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-title"></strong>
                                 </span>
@@ -121,7 +121,7 @@
                                     <option value="Appliances">Appliances</option>
                                     <option value="Household">Household</option>
                                     <option value="Mobile Phone">Mobile Phone</option>
-                                    <option value="Computer Item">Computer Item</option>
+                                    <option value="Computer Item" selected>Computer Item</option>
                                     <option value="Food Item">Food Item</option>
                                 </select>
                                 <span class="invalid-feedback" role="alert">
@@ -132,7 +132,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="control-label text-uppercase h6" >Qty: <span class="text-danger">*</span></label>
-                                <input type="number" name="qty" id="qty" class="form-control">
+                                <input type="number" name="qty" id="qty" class="form-control" value="50">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-qty"></strong>
                                 </span>
@@ -141,7 +141,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="control-label text-uppercase h6" >Price: <span class="text-danger">*</span></label>
-                                <input type="number" name="price" id="price" class="form-control">
+                                <input type="number" name="price" id="price" class="form-control" value="560">
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-price"></strong>
                                 </span>
@@ -168,7 +168,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="control-label text-uppercase h6" >Description:</label>
-                                <textarea name="description" id="description" class="form-control"></textarea>
+                                <textarea name="description" id="description" class="form-control">For testing</textarea>
                                 <span class="invalid-feedback" role="alert">
                                     <strong id="error-description"></strong>
                                 </span>
@@ -203,7 +203,7 @@ $(document).ready(function(){
         event.preventDefault();
         $('.form-control').removeClass('is-invalid')
         
-        var action_url = '{{ route("marketplace.create") }}';
+        var action_url = '{{ route("admin.products.store") }}';
         var type = "POST";
 
         $.ajax({
