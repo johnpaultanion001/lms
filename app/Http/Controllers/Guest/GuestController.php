@@ -12,6 +12,9 @@ class GuestController extends Controller
         $products = Product::where('status', 'APPROVED')->latest()->get();
         return view('guest.marketplace', compact('products')); 
     }
+    public function documentation(){
+        return view('guest.documentation'); 
+    }
     public function unionbank(){
         return view('guest.unionbank.unionbank'); 
     }

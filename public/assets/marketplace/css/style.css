@@ -402,6 +402,196 @@ h3{
     color: #626262;
 }
 
+img.image.image-guest {
+    max-height: 400px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+p.label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00000094;
+    letter-spacing: 1px;
+}
+
+img.profile-pic {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 100px;
+}
+.seller-info {
+    padding: 0 25px;
+}
+.seller-info .name {
+    font-size: 18px;
+    font-weight: 600;
+}
+.seller-info p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #00000094;
+    margin: 2px 0;
+}
+.seller-info i {
+    width: 18px;
+}
+.seller-info p.label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00000094;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+span.bn {
+    font-size: 18px;
+    font-weight: 600;
+}
+p.product_id {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b6b6b;
+}
+.seller-info.bb {
+    background: #f0f2f5;
+    padding: 8px 10px 15px 10px;
+}
+span.title {
+    font-size: 24px;
+    font-weight: 600;
+}
+.card{
+    border-radius: 10px;
+    overflow: hidden;
+}
+input#search {
+    border-radius: 100px;
+    padding: 8px 20px;
+}
+.show-info{
+    display: none;
+    background: #ffffff38;
+    padding: 25px;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+img.admin-logo {
+    margin-bottom: 30px;
+    width: 250px;
+}
+p.date-txt {
+    font-size: 14px;
+}
+p.large-label span {
+    font-size: inherit;
+    font-weight: inherit;
+}
+p.large-label {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 15px 0;
+}
+.small-label{
+    font-size: 14px;
+    color: #0000008c;
+    font-weight: 600;
+}
+.theproductdeatails{
+    text-align: left;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+    color: rgb(255 255 255 / 90%) !important;
+}
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .show>.nav-link {
+    color: rgb(255 255 255 / 90%) !important;
+}
+.nav-item:hover {
+    background: transparent;
+}
+.nav-item:hover .nav-link{
+    color: #20d5eb !important;
+}
+img.the-logo {
+    height: 40px;
+}
+button.navbar-toggler {
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+button.navbar-toggler:focus{
+    border: 0;
+    box-shadow: none;
+}
+a.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+section.search-header {
+    height: 100vh;
+}
+.search-header h1 {
+    font-size: 56px;
+    color: #ffffff;
+    font-weight: 700;
+}
+.search-header h3 {
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 0;
+    letter-spacing: 2px;
+}
+.search-header h5 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #20d5eb;
+    letter-spacing: 1px;
+}
+.search-card {
+    overflow: hidden;
+    background: #ffffff38;
+    border-radius: 100px;
+}
+section.docu {
+    margin: 110px 0;
+}
+.coded {
+    background: black;
+    color: #fff;
+    border-radius: 14px;
+}
+
+.mobile-menu {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.menubtn {
+    background: linear-gradient(180deg, #0e3ba0 0%, #2c2f7c 100%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 991.98px) {
+    .theproductdeatails{
+        text-align: center;
+    }
+}
 @media screen and (max-width: 767.98px) {
     .product-details {
         overflow: auto;
@@ -422,5 +612,17 @@ h3{
 @media screen and (max-width: 574.98px) {
     ul li {
         padding: 10px 20px;
+    }
+    .search-header h1 {
+        font-size: 36px;
+        line-height: 1;
+    }
+    .search-header h5 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .search-header h3 {
+        font-size: 14px;
+        margin-top: 10px;
     }
 }
