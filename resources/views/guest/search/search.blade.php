@@ -1,61 +1,67 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="container-fluid g-0">
-    <div class="row g-0 h-100">
-       
-        <div class="col-12 col-sm-7 col-md-9 col-lg-9 col-xl-9 col-xxl-10 mx-auto">
-            <div class="content px-4 py-4 py-sm-5">
-                    <div class="row g-1">
-                        <div class="col px-2">
-                            <h2>Search product ID</h2>
-                        </div>
-                    </div>
-                    <div class="row g-1 py-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="col-12">
-                                        <input type="text" class="form-control" id="search" placeholder="Search ID" >
-                                    </div>
-                                </div>
+<style>
+    body{
+        background-image: url('{{ asset('public/assets/img/bg.jpg') }}');
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .bg-light {
+        background: linear-gradient(180deg, #0e3ba0 0%, #2c2f7c 100%);
+        background-color: transparent !important;
+    }
+</style>
+<section class="search-header py-5 mt-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center mb-4">
+                    <img src="{{ asset('public/assets/img/ekyc-logo.png') }}" alt="Logo" class="admin-logo">
+                    <h5>VERIFY BEFORE YOU BUY</h5>
+                    <h1 class="m-0">DTI CERTIFIED PRODUCTS</h1>
+                    <h3>KEEPING YOU SAFE WHEN BUYING ONLINE</h3>
+                </div>
+                <div class="card search-card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="search" placeholder="Search ID" >
                             </div>
                         </div>
-                       <div class="card">
-                            <div class="card-body">
+                    </div>
+                </div>
+                <div class="row g-1 show-info">
+                    <div class="col-12 col-md-8">
+                        <div class="card h-100">
+                            <div class="card-body shadow h-100 d-flex align-items-center">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-12 col-lg-5">
                                                 <img class="image image-guest" src="http://localhost/dti-main/public/assets/product_image/2_Gaming%20Chair.jpg" alt="image">
                                             </div>
-                                            <div class="col-6">
-                                                <p class="product_id"></p>
-                                                <p class="title"></p>
-                                                <p class="status"></p>
-                                                <p>₱<span class="price"></span></p>
+                                            <div class="col-12 col-lg-7 theproductdeatails mt-3 mt-lg-0">
+                                                <p><span class="title"></span></p>
+                                                <p class="small-label">#<span class="product_id"></span><span class="ms-3 status"></span></p>
+                                                <p class="large-label">₱<span class="price"></span></p>
                                                 <div class="row">
-                                                    <div class="col-12 col-md-6 my-2">
-                                                        <p class="label">Qty</p>
-                                                        <p class="qty"></p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6 my-2">
+                                                    <div class="col-12 my-2">
                                                         <p class="label">Category</p>
                                                         <p class="category"></p>
                                                     </div>
-                                                    <div class="col-12 col-md-6 my-2">
+                                                    <div class="col-12 my-2">
+                                                        <p class="label">Qty</p>
+                                                        <p class="qty"></p>
+                                                    </div>
+                                                    <div class="col-12 my-2">
                                                         <p class="label">Created At</p>
-                                                        <p class="created_at"></p>
+                                                        <p class="date-txt created_at"></p>
                                                     </div>
-                                                    <div class="col-12 col-md-6 my-2">
-                                                    </div>
-                                                    <div class="col-12 col-md-6 my-2">
-                                                        <p class="label">Created At</p>
-                                                        <p class="created_at"></p>
-                                                    </div>
-                                                    <div class="col-12 col-md-6 my-2">
+                                                    <div class="col-12 my-2">
                                                         <p class="label">Expiration</p>
-                                                        <p class="expiration"></p>
+                                                        <p class="date-txt expiration"></p>
                                                     </div>
                                                     <div class="col-12 my-2">
                                                         <p class="label">Description</p>
@@ -68,55 +74,41 @@
                                 </div>
                             </div>
                         </div>
-                       <div class="card">
-                            <div class="card-body">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card">
+                            <div class="card-body shadow p-0 py-3">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-12">
-                                                <h5>Owner Details / Business Details</h5>
-                                            </div>
-                                            <div class="col-12 col-md-4 my-2">
-                                                <p class="label">Name</p>
-                                                <p class="name"></p>
-                                            </div>
-                                            <div class="col-12 col-md-4 my-2">
-                                                <p class="label">Email</p>
-                                                <p class="email"></p>
-                                            </div>
-                                            <div class="col-12 col-md-4 my-2">
-                                                <p class="label">Mobile Number</p>
-                                                <p class="mobile_number"></p>
-                                            </div>
-                                            <div class="col-12 col-md-12 my-2">
-                                                <p class="label">Address</p>
-                                                <p class="address"></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-4 my-2">
-                                                <p class="label">Business Name</p>
-                                                <p class="bn"></p>
-                                            </div>
-                                            <div class="col-12 col-md-4 my-2">
-                                                <p class="label">Business Phone Number</p>
-                                                <p class="bpn"></p>
-                                            </div>
-                                            <div class="col-12 col-md-4 my-2">
-                                                <p class="label">Business Address</p>
-                                                <p class="ba"></p>
+                                                <div class="d-block text-center">
+                                                    <img src="https://via.placeholder.com/150x300" alt="" class="profile-pic mt-2">
+                                                    <div class="seller-info">
+                                                        <p class="py-2 name"></p>
+                                                        <p><i class="fa-solid fa-mobile-screen-button"></i> <span class="mobile_number"></span></p>
+                                                        <p><i class="fa-solid fa-at"></i> <span class="email"></span></p>
+                                                        <p><i class="fa-solid fa-location-dot"></i> <span class="address"></span></p>
+                                                    </div>
+                                                    <div class="seller-info bb mt-3">
+                                                        <p class="label">Business Details</p>
+                                                        <p><span class="bn"></span></p>
+                                                        <p><i class="fa-solid fa-mobile-screen-button"></i> <span class="bpn"></span></p>
+                                                        <p><i class="fa-solid fa-location-dot"></i> <span class="ba"></span></p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
-                       </div>
+                        </div>
                     </div>
+                </div>
             </div>
-        </div>   
+        </div>
     </div>
-</div>
+</section>
 
 @endsection
 @section('scripts')
@@ -131,6 +123,7 @@
                 
                 },
                 success:function(data){
+                    $('.show-info').css('display', 'flex');
                     $('.product_id').html(data.product_id);
                     $('.title').html(data.title);
                     $('.image').attr('src',data.image)
@@ -154,7 +147,7 @@
                     $('.ba').html(data.ba);
                 }
             })
-        })
+        });
 </script>
 
 @endsection
