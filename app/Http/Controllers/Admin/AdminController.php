@@ -13,7 +13,12 @@ class AdminController extends Controller
 {
    
     public function dashboard(){
-        return view('admin.dashboard.dashboard'); 
+        if(auth()->user()->roles()->pluck('id')->implode(', ') == '2'){
+            return redirect()->route('admin.get_profile');
+        }else{
+            return view('admin.dashboard.dashboard'); 
+        }
+        
     }
     public function users(){
         $users = User::latest()->get();

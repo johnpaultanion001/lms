@@ -28,15 +28,26 @@
     .select2-container--default .select2-selection--single {
         border: 0px solid #aaa !important;
     }
+    .dti_logo_img{
+        position: absolute;
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: scale-down !important;
+    }
+    
+    
 </style>
 @endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-12 col-lg- mx-auto text-center">
-            <img id="image_product" class="my-2 mb-3" src="{{ asset('public/assets/product_image') }}/{{$product->image ?? ''}}" alt="{{$product->image ?? ''}}">
-            <h5 class="text-gray-800 font-weight-bold">{{$product->title ?? ''}}</h5>
-            <button class="btn btn-sm btn-wd mt-2 font-weight-bold {{$product->status === 'APPROVED' ? 'btn-success' : ''}} {{$product->status === 'PENDING' ? 'btn-warning' : ''}} {{$product->status === 'DEACTIVATED' ? 'btn-danger' : ''}}" id="action_status">{{$product->status ?? ''}} <i class="ml-2 far fa-edit"></i></button>
+        <div class="col-12 col-md-12 col-lg- mx-auto text-center text-align-center">
+                @if($product->status === 'APPROVED')
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/DTI_Logo_2019.png/1095px-DTI_Logo_2019.png" class="dti_logo_img" alt="">
+                @endif
+                <img id="image_product" class="my-2 mb-3" src="{{ asset('public/assets/product_image') }}/{{$product->image ?? ''}}" alt="{{$product->image ?? ''}}">
+                <h5 class="text-gray-800 font-weight-bold">{{$product->title ?? ''}}</h5>
+                <button class="btn btn-sm btn-wd mt-2 font-weight-bold {{$product->status === 'APPROVED' ? 'btn-success' : ''}} {{$product->status === 'PENDING' ? 'btn-warning' : ''}} {{$product->status === 'DEACTIVATED' ? 'btn-danger' : ''}}" id="action_status">{{$product->status ?? ''}} <i class="ml-2 far fa-edit"></i></button>
         </div>
         <div class="col-12 col-md-12 col-lg- mx-auto mt-3">
             <div class="row">

@@ -78,9 +78,13 @@ class RegisterController extends Controller
         PersonalDetail::create([
             'user_id'	  => $user->id,
             'name'	  => $data['name'],
+            'province_code'  => '0458',
+            'city_municipality_code'    => '045802',
         ]);
         BusinessDetail::create([
             'user_id'	  => $user->id,
+            'business_province_code'  => '0458',
+            'business_city_municipality_code'    => '045802',
             
         ]);
         return $user;

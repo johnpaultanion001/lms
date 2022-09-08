@@ -13,9 +13,13 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::where('user_id', auth()->user()->id)->latest()->get();
+        if(auth()->user()->status == "APPROVED"){
+            $products = Product::where('user_id', auth()->user()->id)->latest()->get();
+            return view('admin.products.products', compact('products')); 
+        }else{
+            return abort('401');
+        }
         
-        return view('admin.products.products', compact('products')); 
     }
 
     public function show($product)

@@ -7,7 +7,7 @@ use App\Http\Controllers\Guest;
 use App\Http\Controllers\Auth as Login;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect()->route('admin.dashboard');
 });
 
 Auth::routes();
