@@ -6,12 +6,11 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Clients</h6>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th></th>
                                                 <th>Name</th>
                                                 <th>Business Name</th>
                                                 <th>Email</th>
@@ -23,10 +22,7 @@
                                         
                                         <tbody>
                                             @foreach($clients as $client)
-                                                <tr>
-                                                    <td>
-                                                      <a class="btn btn-primary btn-sm text-uppercase" href="{{ route('admin.client', ['user' => $client->user->id]) }}">Details</a>
-                                                    </td>
+                                                <tr class='clickable-row' data-href="{{ route('admin.client', ['user' => $client->user->id]) }}">
                                                     <td>
                                                         {{$client->user->personal_detail->name ?? ''}}
                                                         
@@ -35,7 +31,7 @@
                                                     <td>{{$client->user->email ?? ''}}</td>
                                                     <td>{{$client->user->personal_detail->mobile_number ?? ''}}</td>
                                                     <td><span class="badge badge-warning">{{$client->user->status ?? ''}}</span></td>
-                                                    <td>{{$client->user->created_at ?? ''}}</td>
+                                                    <td class="date-txt">{{$client->user->created_at ?? ''}}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
