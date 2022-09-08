@@ -19,7 +19,6 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('public/assets/css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset('public/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet">
 
     
     
@@ -110,7 +109,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <script src="{{ asset('public/assets/js/main.js') }}"></script>
 
     <script>
         $(document).ready(function(){

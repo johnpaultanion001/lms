@@ -2,44 +2,17 @@
 @section('sub-title','LOGIN')
 
 @section('content')
-<style>
-    body{
-        height: 100vh;
-    }
-    .admin-logo{
-        width: 150px;
-        max-width: 100%;
-    }
-    .bg-gradient-primary {
-        background-image: linear-gradient(180deg, #2c2f7c 10%, #224abe 100%);
-    }
-    .btn-google {
-        color: #fff;
-        background-color: #ea4335;
-        border-color: #ea4335;
-    }
-    .btn-facebook {
-        color: #fff;
-        background-color: #3b5998;
-        border-color: #3b5998;
-    }
-    h1 {
-        font-size: 24px;
-        font-weight: 700;
-        color: #2c2f7c;
-    }
-</style>
-<div class="row h-100 justify-content-center align-items-center">
-    <div class="col-xl-6 col-lg-6 col-md-9">
+<div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
-                    <div class="col-lg-12">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <img src="{{ asset('public/assets/img/ekyclogo.png') }}" alt="Logo" class="admin-logo mb-2">
+                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 <p class="text-danger" id="text_warning">
                                 </p>
                             </div>

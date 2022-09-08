@@ -33,84 +33,118 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-12 col-lg- mx-auto text-center">
-            <img src="https://via.placeholder.com/150x300" alt="" class="profile-pic my-2 mb-3">
+        <div class="col-md-12 text-center m-2">
             <h5 class="text-gray-800 font-weight-bold">{{$user->personal_detail->name ?? ''}}</h5>
-            <p class="m-0">{{$user->email ?? ''}}</p>
-            <p class="m-0">{{$user->personal_detail->mobile_number ?? ''}}</p>
-            <button class="btn btn-sm btn-wd mt-2 font-weight-bold {{$user->status === 'APPROVED' ? 'btn-success' : ''}} {{$user->status === 'PENDING' ? 'btn-warning' : ''}} {{$user->status === 'DEACTIVATED' ? 'btn-danger' : ''}}" id="action_status">{{$user->status ?? ''}} <i class="ml-2 far fa-edit"></i></button>
         </div>
-
-        <div class="col-12 col-md-12 col-lg- mx-auto mt-3">
-            <div class="row">
-                <div class="col-12">
-                    <h5 class="title text-center text-sm-left">Personal Details</h5>
-                </div>
-            </div>
-            <div class="row card-row shadow">
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Address</p>{{$user->personal_detail->address ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Province</p>{{$user->personal_detail->province->province_description ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">City</p>{{$user->personal_detail->city->city_municipality_description ?? ''}}</div>
-                </div>
-            </div>
-            <div class="row card-row shadow">
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Date of Birth</p>{{$user->personal_detail->dob ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Civil Status</p>{{$user->personal_detail->civil_status ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Citizenship</p>{{$user->personal_detail->citizenship ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Source Of Fund</p>{{$user->personal_detail->source_of_fund ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Remarks</p>{{$user->remarks ?? ''}}</div>
-                </div>
-            </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="row">Account Status</th>
+                        <th>
+                            <button class="btn btn-warning btn-sm btn-wd font-weight-bold" id="action_status">{{$user->status ?? ''}}</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Account Ramarks</th>
+                        <th>{{$user->remarks ?? ''}}</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-        <div class="col-12 col-md-12 col-lg- mx-auto mt-3">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-block d-sm-flex justify-content-between align-items-center">
-                        <h5 class="title text-center text-sm-left">Business Details</h5>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#permit">View Business Permit</button>
-                    </div>
-                </div>
-            </div>
-            <div class="row card-row shadow">
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Business Industry</p>{{$user->business_detail->business_industry ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Business Name</p>{{$user->business_detail->business_name ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Business Phone Numbers</p>{{$user->business_detail->business_phone ?? ''}}</div>
-                </div>
-            </div>
-            <div class="row card-row shadow">
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Business Address</p>{{$user->business_detail->business_address ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Province</p>{{$user->business_detail->province->province_description ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">City</p>{{$user->business_detail->city->city_municipality_description ?? ''}}</div>
-                </div>
-            </div>
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Personal Details</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>{{$user->personal_detail->name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{$user->email ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mobile Number</th>
+                        <td>{{$user->personal_detail->mobile_number ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Address</th>
+                        <td>{{$user->personal_detail->address ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Province</th>
+                        <td>{{$user->personal_detail->province->province_description ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{$user->personal_detail->city->city_municipality_description ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Date of Birth</th>
+                        <td>{{$user->personal_detail->dob ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Civil Status</th>
+                        <td>{{$user->personal_detail->civil_status ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Citizenship</th>
+                        <td>{{$user->personal_detail->citizenship ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Source Of Fund</th>
+                        <td>{{$user->personal_detail->source_of_fund ?? ''}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-12 col-lg- mx-auto">
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Business Details</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Business Industry</th>
+                        <td>{{$user->business_detail->business_industry ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Name</th>
+                        <td>{{$user->business_detail->business_name ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Phone Number</th>
+                        <td>{{$user->business_detail->business_phone ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Address</th>
+                        <td>{{$user->business_detail->business_address ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Province</th>
+                        <td>{{$user->business_detail->province->province_description ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{$user->business_detail->city->city_municipality_description ?? ''}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Permit</th>
+                        <td><a href="{{ asset('public/assets/business_permit') }}/{{$user->business_detail->business_permit ?? ''}}" target="_blank">{{$user->business_detail->business_permit ?? ''}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <div class="row">
@@ -119,11 +153,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Product ID</th>
                                     <th>Title</th>
                                     <th>Category</th>
@@ -134,17 +169,19 @@
                             </thead>
                             <tbody>
                                 @foreach($user->products()->get() as $product)
-                                <tr class='clickable-row' data-href="{{ route('admin.products.show', ['product' => $product->product_id]) }}">
-                                    <td class="date-txt">{{$product->product_id ?? ''}}</td>
+                                <tr>
+                                    <td><a class="btn btn-primary btn-sm text-uppercase" href="{{ route('admin.products.show', ['product' => $product->product_id]) }}">Details</a></td>
+                                    <td>{{$product->product_id ?? ''}}</td>
                                     <td>{{$product->title ?? ''}}</td>
                                     <td>{{$product->category ?? ''}}</td>
-                                    <td> <span class="badge  {{$user->status === 'APPROVED' ? 'btn-success' : ''}} {{$user->status === 'PENDING' ? 'btn-warning' : ''}} {{$user->status === 'DEACTIVATED' ? 'btn-danger' : ''}}">{{$product->status ?? ''}}</span></td>
-                                    <td class="date-txt">{{$product->created_at ?? ''}}</td>
+                                    <td> <span class="badge badge-warning">{{$product->status ?? ''}}</span></td>
+                                    <td>{{$product->created_at ?? ''}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th></th>
                                     <th>Product ID</th>
                                     <th>Title</th>
                                     <th>Category</th>
@@ -158,21 +195,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="permit" tabindex="-1" aria-labelledby="permitLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-lg  modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="permitLabel">{{$user->business_detail->business_name ?? ''}} Business Permit</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img src="{{ asset('public/assets/business_permit') }}/{{$user->business_detail->business_permit ?? ''}}" alt="" class="w-100">
-      </div>
-    </div>
-  </div>
 </div>
 
 <form method="post" id="myForm" class="form-horizontal ">

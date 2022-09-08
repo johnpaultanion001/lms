@@ -1,13 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
-    <img src="{{ asset('public/assets/img/ekyc-logo.png') }}" alt="Logo" class="admin-logo">
-    <!-- <div class="sidebar-brand-icon rotate-n-15">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
+    <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-user"></i>
-    </div> -->
-    <div class="sidebar-brand-text mx-3">EKYC</div>
+    </div>
+    <div class="sidebar-brand-text mx-3">{{ Auth::user()->roles()->pluck('title')->implode(', ') }}</div>
 </a>
 
 <!-- Divider -->
@@ -37,10 +36,10 @@
 
 @endcan
 <!-- Divider -->
-<!-- <hr class="sidebar-divider"> -->
+<hr class="sidebar-divider">
 
 <!-- Divider -->
-<!-- <hr class="sidebar-divider"> -->
+<hr class="sidebar-divider">
 @can('admin_access')
 
     <!-- Nav Item - Charts -->
@@ -60,9 +59,9 @@
 @endcan
 
 <!-- Nav Item - Utilities Collapse Menu -->
-<!-- <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-        aria-expanded="false" aria-controls="collapseUtilities">
+        aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-wrench"></i>
         <span>Settings</span>
     </a>
@@ -76,12 +75,14 @@
             <a class="collapse-item" href="utilities-other.html">Other</a>
         </div>
     </div>
-</li> -->
+</li>
 <!-- Divider -->
-<!-- <hr class="sidebar-divider d-none d-md-block"> -->
+<hr class="sidebar-divider d-none d-md-block">
 
 <!-- Sidebar Toggler (Sidebar) -->
-<button class="rounded-circle border-0" id="sidebarToggle"></button>
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
 
 
 </ul>

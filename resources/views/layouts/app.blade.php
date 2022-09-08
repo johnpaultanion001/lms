@@ -23,7 +23,7 @@
 
 <body class="bg-gradient-primary">
 
-    <div class="container h-100">
+    <div class="container">
 
         <!-- Content -->
         @yield('content')

@@ -33,44 +33,83 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-12 col-lg- mx-auto text-center">
-            <img id="image_product" class="my-2 mb-3" src="{{ asset('public/assets/product_image') }}/{{$product->image ?? ''}}" alt="{{$product->image ?? ''}}">
-            <h5 class="text-gray-800 font-weight-bold">{{$product->title ?? ''}}</h5>
-            <button class="btn btn-sm btn-wd mt-2 font-weight-bold {{$product->status === 'APPROVED' ? 'btn-success' : ''}} {{$product->status === 'PENDING' ? 'btn-warning' : ''}} {{$product->status === 'DEACTIVATED' ? 'btn-danger' : ''}}" id="action_status">{{$product->status ?? ''}} <i class="ml-2 far fa-edit"></i></button>
+        <div class="col-md-12 text-center m-2">
+            <h5 class="text-gray-800 font-weight-bold">Product Details</h5>
         </div>
-
-
-        <div class="col-12 col-md-12 col-lg- mx-auto mt-3">
-            <div class="row">
-                <div class="col-12">
-                    <h5 class="title text-center text-sm-left">Product Details</h5>
-                </div>
-            </div>
-            <div class="row card-row shadow">
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Product Id</p>{{$product->product_id ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">Price</p>{{$product->price ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2">
-                    <div><p class="label">QTY</p>{{$product->qty ?? ''}}</div>
-                </div>
-            </div>
-            <div class="row card-row shadow">
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Category</p>{{$product->category ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Expiration</p>{{$product->expiration ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-4 my-2 mb-3">
-                    <div><p class="label">Created At</p>{{$product->created_at ?? ''}}</div>
-                </div>
-                <div class="col-12 col-sm-12 my-2">
-                    <div><p class="label">Description</p>{{$product->description ?? ''}}</div>
-                </div>
-            </div>
+        <div class="col-md-12">
+        
+            <table class="table table-striped">
+                
+                <tbody>
+                    <tr>
+                        <th scope="row">Product Id</th>
+                        <th>
+                            
+                            <h6 id="qrtext">{{$product->product_id ?? ''}}</h6>
+                            <div id="qrcode"></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status</th>
+                        <th>
+                            <button class="btn btn-sm btn-wd font-weight-bold
+                            @if($product->status == 'PENDING')
+                                    btn-warning
+                            @elseif($product->status == 'APPROVED')
+                                    btn-primary
+                            @endif" id="action_status">{{$product->status ?? ''}}</button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Image</th>
+                        <th>
+                            <img id="image_product" src="{{ asset('public/assets/product_image') }}/{{$product->image ?? ''}}" alt="{{$product->image ?? ''}}" width="100" height="100" >
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Title</th>
+                        <th>
+                                {{$product->title ?? ''}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Price</th>
+                        <th>
+                                {{$product->price ?? ''}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Qty</th>
+                        <th>
+                                {{$product->qty ?? ''}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Category</th>
+                        <th>
+                                {{$product->category ?? ''}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Expiration</th>
+                        <th>
+                                {{$product->expiration ?? ''}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Description</th>
+                        <th>
+                                {{$product->description ?? ''}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Created At</th>
+                        <th>
+                                {{$product->created_at ?? ''}}
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
