@@ -178,6 +178,26 @@ h5.title{
     font-size: 18px;
     font-weight: 600;
 }
+.scroll-to-top {
+    bottom: 8rem;
+}
+.mobile-menu {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.menubtn {
+    background: linear-gradient(180deg, #0e3ba0 0%, #2c2f7c 100%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin: 10px;
+    color: #fff;
+    cursor: pointer;
+}
 @media (min-width: 768px){
     .sidebar .nav-item .collapse, .sidebar .nav-item .collapsing {
         margin: 0 0;
