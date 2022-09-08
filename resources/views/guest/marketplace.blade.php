@@ -1,5 +1,38 @@
 @extends('layouts.guest')
-
+@section('styles')
+<style>
+    .product_id {
+        bottom: 0;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        color: white;
+        background-color: blue;
+        border: 1px solid blue;
+    }
+    .product_id_img {
+        text-align: center;
+        width: 100%;
+        color: white;
+        background-color: blue;
+        border: 1px solid blue;
+    }
+    .dti_logo_img{
+        position: absolute;
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: scale-down !important;
+    }
+    .dti_logo{
+        position: absolute;
+        right: 0;
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: scale-down !important;
+    }
+    
+</style>
+@endsection
 @section('content')
 <div class="container-fluid g-0">
     <div class="row g-0 h-100">
@@ -22,6 +55,7 @@
                                         <div class="img">
                                             <img src="https://i.imgur.com/sk5VTNb.jpg" class="prod-img" alt="">
                                         </div>
+                                        <p class="dti_approved"></p>
                                     </div>
                                     <p class="seller_name d-none d-none">Juan Dela Cruz</p>
                                     <p class="price">$1000</p>
@@ -229,8 +263,11 @@
                             <a href="javascript:void(0)" class="prod-btn">
                                 <div class="product p-2">
                                     <div class="img-cont mb-2">
+                                        
                                         <div class="img">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/DTI_Logo_2019.png/1095px-DTI_Logo_2019.png" class="dti_logo" alt="">
                                             <img src="{{ asset('public/assets/product_image') }}/{{$product->image ?? ''}}" class="prod-img" alt="">
+                                            <h6 class="product_id">{{$product->product_id}}</h6>
                                         </div>
                                     </div>
                                     <p class="verified-badge ft-14 dti_approved"><i class="fa-solid fa-circle-check"></i> DTI Approved</p>
@@ -271,6 +308,8 @@
             var img = $(this).find(".prod-img").attr('src');
             var seller_name = $(this).find(".seller_name").html();
             var dti_approved = $(this).find(".dti_approved").html();
+            var product_id = $(this).find(".product_id").html();
+            
 
             $('#product').find(".name").html(name);
             $('#product').find(".seller_name").html(seller_name);
@@ -279,6 +318,15 @@
             $('#product').find(".description").html(desc);
             $('#product').find(".dti_approved").html(dti_approved);
             $('#product').find(".prod-image").attr('src', img);
+            $('#product').find(".product_id_img").html(product_id);
+            if(dti_approved == ""){
+                $('#product').find(".dti_logo_img").addClass('d-none');
+                $('#product').find(".product_id_img").addClass('d-none');
+            }else{
+                $('#product').find(".dti_logo_img").removeClass('d-none');
+                $('#product').find(".product_id_img").removeClass('d-none');
+            }
+            
 
             $('.chat-box').find(".seller_name").html(seller_name);
             $('.chat-box').find(".prod-image").attr('src', img);

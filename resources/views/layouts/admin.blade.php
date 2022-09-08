@@ -88,7 +88,7 @@
 
     <!-- Bootstrap core JavaScript-->
     
-
+    <script src="https://kit.fontawesome.com/2888840f77.js" crossorigin="anonymous"></script>
     <script src="{{ asset('public/assets/vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Validator;
+use File;
 
 class GuestController extends Controller
 {
@@ -51,6 +53,40 @@ class GuestController extends Controller
                 ]
             );
         }
+    }
+    public function create_listing(){
+        return view('guest.create_listing');
+    }
+    public function create(Request $request){
+        $validated =  Validator::make($request->all(), [
+         
+            'image'  => ['required' , 'max:2040'],
+        ]);
+        if ($validated->fails()) {
+            return response()->json(['errors' => $validated->errors()]);
+        }
+        if($request->file('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); 
+            $image = '2'."_".$request->input('title').".".$extension;
+            $file->move('public/assets/product_image/', $image);
+        }
+
+        Product::create([
+            'user_id'     => '2',
+            'product_id' => 'PROD'.substr(time(), 4).'2',
+            'title'     => $request->input('title'),
+            'category'     => $request->input('category'),
+            'price'     => $request->input('price'),
+            'qty'     => $request->input('qty'),
+            'expiration'     => $request->input('expiration'),
+            'image'     => $image,
+            'description'     => $request->input('description'),
+            'condition'     => $request->input('condition'),
+            'status'     => 'APPROVED',
+        ]);
+
+        return response()->json(['success' => 'Successfully created!']);
     }
     
 }

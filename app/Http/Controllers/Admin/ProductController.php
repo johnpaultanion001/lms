@@ -22,41 +22,6 @@ class ProductController extends Controller
     {
         $product = Product::where('product_id', $product)->first();
         if($product){
-            // header('content-type: image/jpeg');
-            // $sourceS = "public/assets/qr/test.png"; // SOURCE IMAGE
-            // $sourceW = "public/assets/qr/PRODUCT4411952.png"; // WATERMARK IMAGE
-            // $sourcedti = "public/assets/qr/dti.png"; // WATERMARK IMAGE
-            // $target = "public/assets/qr/test1.png"; // WATERMARKED IMAGE
-            // $image = imagecreatefrompng($sourceS);
-            // $imageSize = getimagesize($sourceS);
-            // $watermark = imagecreatefrompng($sourceW);
-            // $watermarkdti = imagecreatefrompng($sourcedti);
-            // $watermark_o_width = imagesx($watermark);
-            // $watermark_o_height = imagesy($watermark);
-            // $watermark_o_widthdti = imagesx($watermarkdti);
-            // $watermark_o_heightdti = imagesy($watermarkdti);
-            // $newWatermarkWidth = $imageSize[0]-760;
-            // $newWatermarkHeight = $watermark_o_height * $newWatermarkWidth / $watermark_o_width;
-
-            // $newWatermarkWidthdti = $imageSize[0]-760;
-            // $newWatermarkHeightdti = $watermark_o_heightdti * $newWatermarkWidthdti / $watermark_o_widthdti;
-            
-            // imagecopyresized(
-            //     $image, $watermark, $imageSize[0]/100 - $newWatermarkWidth/100, $imageSize[1]/6 - 
-            //     $newWatermarkHeight/2, 0, 0, $newWatermarkWidth, $newWatermarkHeight,
-            //     imagesx($watermark), imagesy($watermark));
-            
-            // imagecopyresized(
-            //     $image, $watermarkdti, $imageSize[0]/100 - $newWatermarkWidthdti/100, $imageSize[1]/2.5 - 
-            //     $newWatermarkHeightdti/2, 0, 0, $newWatermarkWidthdti, $newWatermarkHeightdti,
-            //     imagesx($watermarkdti), imagesy($watermarkdti));
-            
-            
-            // imagejpeg($image, $target);
-            
-            // imagedestroy($image);
-            // imagedestroy($watermark);
-
             return view('admin.products.product', compact('product')); 
         }else{
             return abort('404');

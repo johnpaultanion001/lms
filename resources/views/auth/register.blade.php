@@ -15,7 +15,8 @@
                     <form class="user" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
-                                <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" placeholder="Your Name" id="name" name="name" autofocus>
+                                <label class="control-label h6" >Name: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" placeholder="Your Name" id="name" name="name" value="Tom Oliver Chua" autofocus>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -23,7 +24,8 @@
                                 @enderror
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" placeholder="Email Address" id="email" name="email">
+                            <label class="control-label h6" >Email: <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" placeholder="Email Address" id="email" name="email" value="tomchua@gmail.com">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -32,7 +34,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Password" id="password" name="password">
+                                <label class="control-label h6" >Password: <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Password" id="password" name="password" value="password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -40,7 +43,8 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
-                                <input type="password" class="form-control form-control-user" placeholder="Repeat Password" id="password-confirm" name="password_confirmation">
+                                <label class="control-label h6" >Repeat Password: <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control form-control-user" placeholder="Repeat Password" id="password-confirm" name="password_confirmation" value="password">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-user btn-block">
