@@ -47,6 +47,13 @@ class ClientController extends Controller
     public function registration(Request $request){
         if(auth()->user()->roles()->pluck('id')->implode(', ') == '2'){
             if($request->input('action') == 'STEP1'){
+                if(auth()->user()->personal_detail->image != '')
+                {
+                    $validation_image =  ['max:2040'];
+                }
+                else{
+                    $validation_image =  ['required', 'max:2040'];
+                }
                 $validated =  Validator::make($request->all(), [
                     'email'   => ['required'],
                     'mobile_number'   => ['required', 'string', 'min:8','max:11'],
@@ -58,6 +65,8 @@ class ClientController extends Controller
                     'civil_status' => ['required'],
                     'citizenship' => ['required'],
                     'source_of_fund' => ['required'],
+                    'image' => $validation_image,
+                    'facebook_link' => ['required'],
                 ]);
                 if ($validated->fails()) {
                     return response()->json(['errors' => $validated->errors()]);
@@ -75,7 +84,8 @@ class ClientController extends Controller
                     'business_industry'   => ['required'],
                     'business_name'   => ['required'],
                     'business_address'   => ['required'],
-                    'business_phone'   => ['required', 'string', 'min:8','max:11'],
+                    'business_phone'   => ['required', 'string'],
+                    'business_phone_number' =>  ['required', 'string', 'min:8','max:11'],
                     'business_province_code'   => ['required'],
                     'business_city_municipality_code'   => ['required'],
                     'business_permit' => $validation_business_permit,
@@ -88,6 +98,12 @@ class ClientController extends Controller
             
             
             if($request->input('action') == 'STEP1'){
+                if($request->file('image')){
+                    $file = $request->file('image');
+                    $extension = $file->getClientOriginalExtension(); 
+                    $image = auth()->user()->id."_".$request->input('name').".".$extension;
+                    $file->move('public/assets/image_user/', $image);
+                }
                 PersonalDetail::updateOrCreate([
                     'user_id'   => auth()->user()->id,
                 ],[
@@ -100,6 +116,8 @@ class ClientController extends Controller
                     'civil_status'     => $request->input('civil_status'),
                     'citizenship'     => $request->input('citizenship'),
                     'source_of_fund'     => $request->input('source_of_fund'),
+                    'image' => $image ?? auth()->user()->personal_detail->image,
+                    'facebook_link' => $request->input('facebook_link'),
                 ]);
                 User::where('id', auth()->user()->id)->update([
                     'reg_step'  => "STEP2",
@@ -119,6 +137,7 @@ class ClientController extends Controller
                     'business_name'     => $request->input('business_name'),
                     'business_address'     => $request->input('business_address'),
                     'business_phone'     => $request->input('business_phone'),
+                    'business_phone_number'     => $request->input('business_phone_number'),
                     'business_province_code'     => $request->input('business_province_code'),
                     'business_city_municipality_code'     => $request->input('business_city_municipality_code'),
                     'business_permit' => $business_permit ?? auth()->user()->business_detail->business_permit,

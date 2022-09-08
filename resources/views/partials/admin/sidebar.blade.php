@@ -56,7 +56,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Clients</span></a>
     </li>
-
+    <li class="nav-item {{ request()->is('admin/reports')|| request()->is('admin/reports/*')  ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.reports') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Reports</span></a>
+    </li>
 @endcan
 
 <!-- Nav Item - Utilities Collapse Menu -->

@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('province_code')->nullable();
             $table->string('city_municipality_code')->nullable();
             $table->string('source_of_fund')->nullable();
+            $table->string('image')->nullable();
+            $table->string('facebook_link')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -20,6 +20,8 @@ class PersonalDetail extends Model
         'province_code',
         'city_municipality_code',
         'source_of_fund',
+        'image',
+        'facebook_link',
     ];
 
     public function user()

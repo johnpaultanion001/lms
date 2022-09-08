@@ -82,6 +82,16 @@
                                 <div class="m-2">
                                     <h5 class="text-gray-800 font-weight-bold">Contact Details</h5>
                                     <div class="row m-2">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Image: <span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="image" id="image">
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong id="error-image"></strong>
+                                                </span>
+                                                <a href="{{ asset('public/assets/image_user') }}/{{auth()->user()->personal_detail->image ?? ''}}" target="_blank">{{auth()->user()->personal_detail->image ?? ''}}</a>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Email: <span class="text-danger">*</span></label>
@@ -95,7 +105,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mobile Number: <span class="text-danger">*</span></label>
-                                                <input id="mobile_number" name="mobile_number" type="text" class="form-control" value="{{$user->personal_detail->mobile_number ?? ''}}">
+                                                <input id="mobile_number" name="mobile_number" type="text" class="form-control" value="{{$user->personal_detail->mobile_number ?? '09776668820'}}">
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong id="error-mobile_number"></strong>
                                                 </span>
@@ -104,7 +114,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address: <span class="text-danger">*</span></label>
-                                                <textarea name="address" id="address" class="form-control" >{{auth()->user()->personal_detail->address ?? ''}}</textarea>
+                                                <textarea name="address" id="address" class="form-control" >{{auth()->user()->personal_detail->address ?? 'Casiz st. Sitio Eldorado'}}</textarea>
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong id="error-address"></strong>
                                                 </span>
@@ -139,6 +149,15 @@
                                                 </span>
                                             </div> 
                                         </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Facebook Link / Shoppe Link / Lazada Link: <span class="text-danger">*</span></label>
+                                                <input id="facebook_link" name="facebook_link" type="text" class="form-control" value="{{$user->personal_detail->facebook_link ?? 'https://web.facebook.com/'}}">
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong id="error-facebook_link"></strong>
+                                                </span>
+                                            </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +177,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Date of Birth: <span class="text-danger">*</span></label>
-                                                <input id="dob" name="dob" type="date" class="form-control" value="{{$user->personal_detail->dob ?? ''}}">
+                                                <input id="dob" name="dob" type="date" class="form-control" value="{{$user->personal_detail->dob ?? '2000-02-21'}}">
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong id="error-dob"></strong>
                                                 </span>
@@ -172,7 +191,7 @@
                                                     <option value="" disabled selected>Civil Status</option>
                                                     <option value="Divorced" {{Auth::user()->personal_detail->civil_status == 'Divorced' ? 'selected' : '' }}>Divorced</option>
                                                     <option value="Married" {{Auth::user()->personal_detail->civil_status == 'Married' ? 'selected' : '' }}>Married</option>
-                                                    <option value="Single" {{Auth::user()->personal_detail->civil_status == 'Single' ? 'selected' : '' }}>Single</option>
+                                                    <option value="Single" {{Auth::user()->personal_detail->civil_status == 'Single' ? 'selected' : 'selected' }}>Single</option>
                                                     <option value="Widowed" {{Auth::user()->personal_detail->civil_status == 'Widowed' ? 'selected' : '' }}>Widowed</option>
                                                     
                                                 </select>
@@ -188,7 +207,7 @@
                                                     <option value="" disabled selected>Citizenship</option>
                                                     <option value="American" {{Auth::user()->personal_detail->citizenship == 'American' ? 'selected' : '' }}>American</option>
                                                     <option value="Chinese" {{Auth::user()->personal_detail->citizenship == 'Chinese' ? 'selected' : '' }}>Chinese</option>
-                                                    <option value="Filipino" {{Auth::user()->personal_detail->citizenship == 'Filipino' ? 'selected' : '' }}>Filipino</option>
+                                                    <option value="Filipino" {{Auth::user()->personal_detail->citizenship == 'Filipino' ? 'selected' : 'selected' }}>Filipino</option>
                                                     <option value="Japanese" {{Auth::user()->personal_detail->citizenship == 'Japanese' ? 'selected' : '' }}>Japanese</option>
                                                     <option value="Other Citizenship" {{Auth::user()->personal_detail->citizenship == 'Other Citizenship' ? 'selected' : '' }}>Other Citizenship</option>
                                                 </select>
@@ -205,7 +224,7 @@
                                                     <option value="Business Income" {{Auth::user()->personal_detail->source_of_fund == 'Business Income' ? 'selected' : '' }}>Business Income</option>
                                                     <option value="Investment" {{Auth::user()->personal_detail->source_of_fund == 'Investment' ? 'selected' : '' }}>Investment</option>
                                                     <option value="Pension" {{Auth::user()->personal_detail->source_of_fund == 'Pension' ? 'selected' : '' }}>Pension</option>
-                                                    <option value="Personal Savings" {{Auth::user()->personal_detail->source_of_fund == 'Personal Savings' ? 'selected' : '' }}>Personal Savings</option>
+                                                    <option value="Personal Savings" {{Auth::user()->personal_detail->source_of_fund == 'Personal Savings' ? 'selected' : 'selected' }}>Personal Savings</option>
                                                     <option value="Others" {{Auth::user()->personal_detail->source_of_fund == 'Others' ? 'selected' : '' }}>Others</option>
                                                 </select>
                                                 <span class="invalid-feedback" role="alert">
@@ -231,7 +250,7 @@
                                     <select name="business_industry" id="business_industry" class="select2" style="width: 100%">
                                         <option value="" disabled selected>Business Industry</option>
                                         <option value="Agriculture Hunting Foretry" {{Auth::user()->business_detail->business_industry  == 'Agriculture Hunting Foretry' ? 'selected' : '' }}>Agriculture, Hunting, Foretry</option>
-                                        <option value="Computer Company" {{Auth::user()->business_detail->business_industry  == 'Computer Company' ? 'selected' : '' }}>Computer Company</option>
+                                        <option value="Computer Company" {{Auth::user()->business_detail->business_industry  == 'Computer Company' ? 'selected' : 'selected' }}>Computer Company</option>
                                         <option value="Construction Company" {{Auth::user()->business_detail->business_industry  == 'Construction Company' ? 'selected' : '' }}>Construction Company</option>
                                         <option value="Education" {{Auth::user()->business_detail->business_industry  == 'Education' ? 'selected' : '' }}>Education</option>
                                         <option value="Food Company" {{Auth::user()->business_detail->business_industry  == 'Food Company' ? 'selected' : '' }}>Food Company</option>
@@ -244,23 +263,30 @@
                                 </div> 
                                 <div class="form-group">
                                     <label>Business Name: <span class="text-danger">*</span></label>
-                                    <input id="business_name" name="business_name" type="text" class="form-control" value="{{$user->business_detail->business_name ?? ''}}">
+                                    <input id="business_name" name="business_name" type="text" class="form-control" value="{{$user->business_detail->business_name ?? 'Softsuptech'}}" >
                                     <span class="invalid-feedback" role="alert">
                                         <strong id="error-business_name"></strong>
                                     </span>
                                 </div> 
                                 <div class="form-group">
                                     <label>Business Number: <span class="text-danger">*</span></label>
-                                    <input id="business_phone" name="business_phone" type="number" class="form-control" value="{{$user->business_detail->business_phone ?? ''}}">
+                                    <input id="business_phone" name="business_phone" type="text" class="form-control" value="{{$user->business_detail->business_phone ?? 'ABC123'}}" >
                                     <span class="invalid-feedback" role="alert">
                                         <strong id="error-business_phone"></strong>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Business Phone Number: <span class="text-danger">*</span></label>
+                                    <input id="business_phone_number" name="business_phone_number" type="number" class="form-control" value="{{$user->business_detail->business_phone_number ?? '09776668820'}}">
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong id="error-business_phone_number"></strong>
                                     </span>
                                 </div> 
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Business Address: <span class="text-danger">*</span></label>
-                                    <textarea name="business_address" id="business_address" class="form-control" >{{auth()->user()->business_detail->business_address ?? ''}}</textarea>
+                                    <textarea name="business_address" id="business_address" class="form-control" >{{auth()->user()->business_detail->business_address ?? 'Casiz st. Sitio Eldorado'}}</textarea>
                                     <span class="invalid-feedback" role="alert">
                                         <strong id="error-business_address"></strong>
                                     </span>
@@ -320,10 +346,14 @@
                                     <thead>
                                         <tr>
                                         <th scope="col">Personal Details</th>
-                                        <th scope="col"></th>
+                                        <td><a href="{{ asset('public/assets/image_user') }}/{{auth()->user()->personal_detail->image ?? ''}}" target="_blank">{{auth()->user()->personal_detail->image ?? ''}}</a></td>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <th scope="row">Image</th>
+                                            <td>{{auth()->user()->personal_detail->name ?? ''}}</td>
+                                        </tr>
                                         <tr>
                                             <th scope="row">Name</th>
                                             <td>{{auth()->user()->personal_detail->name ?? ''}}</td>
@@ -385,8 +415,12 @@
                                             <td>{{auth()->user()->business_detail->business_name ?? ''}}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Business Phone Number</th>
+                                            <th scope="row">Business Number</th>
                                             <td>{{auth()->user()->business_detail->business_phone ?? ''}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Business Phone Number</th>
+                                            <td>{{auth()->user()->business_detail->business_phone_number ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Business Address</th>

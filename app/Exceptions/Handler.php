@@ -44,7 +44,14 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+           
         });
+    }
+    
+    public function report(Throwable $e)
+    {
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect()->route('admin.dashboard');
+        }
     }
 }

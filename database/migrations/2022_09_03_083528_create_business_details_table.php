@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('business_province_code')->nullable();
             $table->string('business_city_municipality_code')->nullable();
             $table->string('business_permit')->nullable();
+            $table->string('business_phone_number')->nullable();
             $table->timestamps();
         });
     }

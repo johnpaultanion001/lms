@@ -33,6 +33,14 @@
         <script src="{{ asset('public/assets/marketplace/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('public/assets/marketplace/js/jquery.min.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(document).on('click', '.menubtn', function(){
+                    window.location.href = "{{ route("admin.dashboard") }}";
+                });
+            });
+        </script>
         @yield('scripts')
+        
     </body>
 </html>

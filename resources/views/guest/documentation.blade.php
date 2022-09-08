@@ -16,10 +16,10 @@
                             <a class="nav-link" href="{{ url('documentation') }}">Documentation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
+                            <a class="nav-link" href="{{ url('/register') }}">Register</a>
                         </li>
                     </ul>
                 </div>

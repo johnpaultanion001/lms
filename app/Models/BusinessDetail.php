@@ -18,6 +18,7 @@ class BusinessDetail extends Model
         'business_province_code',
         'business_city_municipality_code',
         'business_permit',
+        'business_phone_number',
     ];
 
     public function user()
