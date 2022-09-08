@@ -9,6 +9,11 @@ use App\Http\Controllers\Auth as Login;
 Route::get('/', function () {
     return redirect()->route('admin.dashboard');
 });
+Route::get('clear_database', function () {
+    \Artisan::call('cache:clear');
+    \Artisan::call('migrate:fresh --seed');
+    dd("Cache is cleared");
+});
 
 Auth::routes();
 Route::get('/google/login', [Login\LoginController::class, 'googleLogin'])->name('googleLogin');
