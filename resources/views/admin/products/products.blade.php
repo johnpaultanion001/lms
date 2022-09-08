@@ -203,7 +203,7 @@ $(document).ready(function(){
         event.preventDefault();
         $('.form-control').removeClass('is-invalid')
         
-        var action_url = '{{ route("admin.products.store") }}';
+        var action_url = '{{ route("marketplace.create") }}';
         var type = "POST";
 
         $.ajax({

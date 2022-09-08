@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('expiration')->nullable();
             $table->string('description')->nullable();
             $table->string('status')->default('PENDING');
+            $table->string('condition')->nullable();
             
             $table->timestamps();
         });

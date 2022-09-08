@@ -38,8 +38,6 @@
             <h5 class="text-gray-800 font-weight-bold">{{$product->title ?? ''}}</h5>
             <button class="btn btn-sm btn-wd mt-2 font-weight-bold {{$product->status === 'APPROVED' ? 'btn-success' : ''}} {{$product->status === 'PENDING' ? 'btn-warning' : ''}} {{$product->status === 'DEACTIVATED' ? 'btn-danger' : ''}}" id="action_status">{{$product->status ?? ''}} <i class="ml-2 far fa-edit"></i></button>
         </div>
-
-
         <div class="col-12 col-md-12 col-lg- mx-auto mt-3">
             <div class="row">
                 <div class="col-12">

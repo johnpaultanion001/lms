@@ -13,7 +13,7 @@
         </ul>
     </div>
     <div>
-        <a href="create-listing.php" class="btn btn-primary w-100"><i class="fa-solid fa-plus"></i> Create new listing</a>
+        <a href="{{route('create_listing')}}" class="btn btn-primary w-100"><i class="fa-solid fa-plus"></i> Create new listing</a>
     </div>
     <hr>
     <div>

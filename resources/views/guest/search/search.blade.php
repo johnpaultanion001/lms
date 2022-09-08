@@ -116,7 +116,6 @@
         $('#search').on('keyup',function(){
             var action_url = '{{ route("search.product", ":product") }}';
                 action_url = action_url.replace(':product', $(this).val());
-
             $.ajax({
                 url : action_url,
                 dataType:"json",
