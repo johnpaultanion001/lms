@@ -60,10 +60,12 @@
                                         btn-primary
                                 @endif" id="action_status">{{$product->status ?? ''}}</button>
                             @else
-                                {{$product->status ?? ''}}
+                                @if($product->status == 'APPROVED')
+                                    <i class="fa-solid fa-circle-check text-success"></i> DTI Approved
+                                @else
+                                    <i class="fa-solid fa-circle-xmark text-danger"></i> DTI Not Approved
+                                @endif
                             @endif
-                            
-                          
                         </th>
                     </tr>
                     <tr>
