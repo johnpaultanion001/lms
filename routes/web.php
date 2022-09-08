@@ -18,6 +18,8 @@ Route::get('/facebook/login', [Login\LoginController::class, 'facebookLogin'])->
 Route::get('verify/resend', [Login\TwoFactorController::class, 'resend'])->name('verify.resend');
 Route::resource('verify', Login\TwoFactorController::class)->only(['index', 'store']);
 
+Route::get('/documentation', [Guest\GuestController::class, 'documentation'])->name('documentation');
+
 Route::get('/marketplace', [Guest\GuestController::class, 'marketplace'])->name('marketplace');
 Route::get('/create_listing', [Guest\GuestController::class, 'create_listing'])->name('create_listing');
 Route::post('/create_listing', [Guest\GuestController::class, 'create'])->name('marketplace.create');
