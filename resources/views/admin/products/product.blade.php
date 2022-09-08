@@ -48,6 +48,9 @@
                 <img id="image_product" class="my-2 mb-3" src="{{ asset('public/assets/product_image') }}/{{$product->image ?? ''}}" alt="{{$product->image ?? ''}}">
                 <h5 class="text-gray-800 font-weight-bold">{{$product->title ?? ''}}</h5>
                 <button class="btn btn-sm btn-wd mt-2 font-weight-bold {{$product->status === 'APPROVED' ? 'btn-success' : ''}} {{$product->status === 'PENDING' ? 'btn-warning' : ''}} {{$product->status === 'DEACTIVATED' ? 'btn-danger' : ''}}" id="action_status">{{$product->status ?? ''}} <i class="ml-2 far fa-edit"></i></button>
+                @if($product->status === 'APPROVED')
+                    <a href="{{ asset('public/assets/download_product') }}/{{$product->id ?? ''}}.png" download class="btn btn-sm btn-wd mt-2 font-weight-bold btn-primary">Download Product</a>
+                @endif
         </div>
         <div class="col-12 col-md-12 col-lg- mx-auto mt-3">
             <div class="row">

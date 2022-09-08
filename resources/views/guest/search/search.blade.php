@@ -12,6 +12,12 @@
         background: linear-gradient(180deg, #0e3ba0 0%, #2c2f7c 100%);
         background-color: transparent !important;
     }
+    .dti_logo{
+        position: absolute;
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: scale-down !important;
+    }
 </style>
 <section class="search-header py-5 mt-5">
     <div class="container py-5">
@@ -27,7 +33,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <div class="col-12">
-                                <input type="text" class="form-control" id="search" placeholder="Search ID" >
+                                <input type="text" class="form-control" id="search" placeholder="Search ID" value="PROD4400702">
                             </div>
                         </div>
                     </div>
@@ -40,6 +46,7 @@
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-12 col-lg-5">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/DTI_Logo_2019.png/1095px-DTI_Logo_2019.png" class="dti_logo" alt="">
                                                 <img class="image image-guest" src="http://localhost/dti-main/public/assets/product_image/2_Gaming%20Chair.jpg" alt="image">
                                             </div>
                                             <div class="col-12 col-lg-7 theproductdeatails mt-3 mt-lg-0">

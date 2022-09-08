@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('source_of_fund')->nullable();
             $table->string('image')->nullable();
             $table->string('facebook_link')->nullable();
+            
             $table->timestamps();
         });
     }

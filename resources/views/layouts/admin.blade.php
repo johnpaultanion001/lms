@@ -118,6 +118,9 @@
     <script>
         $(document).ready(function(){
             $('.select2').select2();
+            $(document).on('click', '.menubtn', function(){
+                window.location.href = "{{ route("admin.dashboard") }}";
+            });
         });
     </script>
     @yield('scripts')

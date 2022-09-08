@@ -49,6 +49,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
     Route::get('/users', [Admin\AdminController::class, 'users'])->name('users');
     Route::resource('products', Admin\ProductController::class)->only('show');
     Route::post('/products/{product}', [Admin\ProductController::class, 'product'])->name('product');
+    Route::get('/reports', [Admin\AdminController::class, 'reports'])->name('reports');
 
 });
 

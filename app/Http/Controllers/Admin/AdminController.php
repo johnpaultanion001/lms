@@ -38,5 +38,8 @@ class AdminController extends Controller
         ]);
         return response()->json(['success' => 'Successfully updated!']);
     }
+    public function reports(){
+        return view('admin.reports.reports'); 
+    }
     
 }

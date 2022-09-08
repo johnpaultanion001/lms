@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Facebook Link: <span class="text-danger">*</span></label>
+                                                <label>Facebook Link / Shoppe Link / Lazada Link: <span class="text-danger">*</span></label>
                                                 <input id="facebook_link" name="facebook_link" type="text" class="form-control" value="{{$user->personal_detail->facebook_link ?? 'https://web.facebook.com/'}}">
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong id="error-facebook_link"></strong>
