@@ -48,6 +48,12 @@
                                                         <p class="created_at"></p>
                                                     </div>
                                                     <div class="col-12 col-md-6 my-2">
+                                                    </div>
+                                                    <div class="col-12 col-md-6 my-2">
+                                                        <p class="label">Created At</p>
+                                                        <p class="created_at"></p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 my-2">
                                                         <p class="label">Expiration</p>
                                                         <p class="expiration"></p>
                                                     </div>
