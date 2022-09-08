@@ -180,11 +180,16 @@ h5.title{
 }
 .scroll-to-top {
     bottom: 8rem;
+    z-index: 9;
 }
 .mobile-menu {
     position: fixed;
     bottom: 10px;
     right: 10px;
+    z-index: 9;
+}
+.nav-pills > li > a [class*="fa-"]{
+    top: 31px !important;
 }
 .menubtn {
     background: linear-gradient(180deg, #0e3ba0 0%, #2c2f7c 100%);
@@ -197,6 +202,7 @@ h5.title{
     margin: 10px;
     color: #fff;
     cursor: pointer;
+    z-index: 9;
 }
 @media (min-width: 768px){
     .sidebar .nav-item .collapse, .sidebar .nav-item .collapsing {

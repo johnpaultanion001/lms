@@ -287,27 +287,27 @@ button#prod-close:hover {
 
 .chat-box {
     display: none;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 15px;
     background: #ffffff;
     border-radius: 10px 10px 0 0;
     font-size: 14px;
-    width: 260px;
+    width: 300px;
     box-shadow: 0px 0px 5px 0px #00000023;
 }
 .chat-head {
     border-bottom: 1px solid #00000029;
 }
 .chat-body{
-    min-height: 223px;
+    min-height: 300px;
 }
 .chat-body p {
     background: #e7e7e7;
     padding: 7px 10px;
     border-radius: 10px;
     margin: 0 5px 15px 5px;
-    font-size: 12px;
+    font-size: 14px;
 }
 .message-right p {
     background: #0d6efd;
@@ -328,6 +328,7 @@ input.msg-input {
     border: none;
     font-size: 12px;
     padding: 5px 15px;
+    width: 220px;
 }
 button, input:focus, input:focus-visible{
     outline: 0;
@@ -348,7 +349,7 @@ button, input:focus, input:focus-visible{
     background-color: #f7931e;
     border-color: #f7931e;
     color: #ffffff !important;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     border-radius: 30px;
@@ -358,7 +359,17 @@ button, input:focus, input:focus-visible{
     background-color: #9f9f9f;
     border-color: #9f9f9f;
     color: #ffffff !important;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border-radius: 30px;
+    width: 100%;
+}
+.btn.btn-payment3 {
+    background-color: #ac0000;
+    border-color: #ac0000;
+    color: #ffffff !important;
+    font-size: 14px;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
     border-radius: 30px;

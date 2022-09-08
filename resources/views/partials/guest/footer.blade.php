@@ -66,6 +66,7 @@
             <em>Payment made easy with UnionBank</em>
             <a href="{{ route('unionbank') }}" class="btn btn-payment mb-2">Pay via UnionBank</a>
             <a href="#" class="btn btn-payment2 mb-1">Pay via Cash</a>
+            <a href="#" class="btn btn-payment3 mb-1">Report a Problem</a>
         </div>
     </div>
     <div class="chat-footer py-3 px-3">
