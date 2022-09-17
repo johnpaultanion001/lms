@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'EKYC DTI',
+    'site_title' => 'EARIST-ITE',
 ];

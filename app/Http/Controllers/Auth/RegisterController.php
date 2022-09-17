@@ -54,7 +54,13 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'student_no' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'contact_number' => ['required','string', 'min:8','max:11'],
+            'gender' => ['required'],
+            'course' => ['required'],
+            'year' => ['required'],
+            'section' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -68,24 +74,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
+            'name' => $data['name'],
+            'student_no' => $data['student_no'],
             'email' => $data['email'],
+            'contact_number' => $data['contact_number'],
+            'gender' => $data['gender'],
+            'course' => $data['course'],
+            'year' => $data['year'],
+            'section' => $data['section'],
             'password' => Hash::make($data['password']),
         ]);
         RoleUser::insert([
             'user_id' => $user->id,
             'role_id' => 2,
-        ]);
-        PersonalDetail::create([
-            'user_id'	  => $user->id,
-            'name'	  => $data['name'],
-            'province_code'  => '0458',
-            'city_municipality_code'    => '045802',
-        ]);
-        BusinessDetail::create([
-            'user_id'	  => $user->id,
-            'business_province_code'  => '0458',
-            'business_city_municipality_code'    => '045802',
-            
         ]);
         return $user;
     }

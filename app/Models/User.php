@@ -7,26 +7,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
 
-    protected $dates = [
-        'two_factor_expires_at',
-    ];
 
     protected $fillable = [
-        'social_id',
+        'name',
+        'student_no',
         'email',
-        'provider', 
+        'contact_number',
+        'gender',
+        'course',
+        'year',
+        'section',
         'password',
-        'reg_step',
-        'status',
-        'remarks',
-        'two_factor_code',
-        'two_factor_expires_at',
-        'isSubmit',
     ];
 
     protected $hidden = [
@@ -43,40 +40,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
-
-    public function personal_detail()
+    public function userResults()
     {
-        return $this->belongsTo(PersonalDetail::class, 'id', 'user_id');
+        return $this->hasMany(Result::class, 'user_id', 'id');
     }
-    public function business_detail()
-    {
-        return $this->belongsTo(BusinessDetail::class, 'id', 'user_id');
-    }
-
-    public function generateTwoFactorCode()
-    {
-        $this->timestamps = false; //Dont update the 'updated_at' field yet
-        
-        $this->two_factor_code = rand(100000, 999999);
-        $this->two_factor_expires_at = now()->addMinutes(10);
-        $this->save();
-    }
-
-    /**
-     * Reset the MFA code generated earlier
-     */
-    public function resetTwoFactorCode()
-    {
-        $this->timestamps = false; //Dont update the 'updated_at' field yet
-        
-        $this->two_factor_code = null;
-        $this->two_factor_expires_at = null;
-        $this->save();
-    }
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'user_id');
-    }
-
 
 }

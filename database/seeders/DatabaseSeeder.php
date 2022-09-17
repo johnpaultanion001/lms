@@ -20,8 +20,10 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
-            PhilippineProvincesTableSeeder::class,
-            PhilippineCitiesTableSeeder::class,
+            CategoriesTableSeeder::class,
+            QuestionsTableSeeder::class,
+            OptionsTableSeeder::class,
+           
         ]);
     }
 }

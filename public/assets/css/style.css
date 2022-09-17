@@ -202,7 +202,7 @@ h5.title{
     margin: 10px;
     color: #fff;
     cursor: pointer;
-    z-index: 9;
+    z-index: 10;
 }
 @media (min-width: 768px){
     .sidebar .nav-item .collapse, .sidebar .nav-item .collapsing {

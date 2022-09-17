@@ -15,17 +15,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('social_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('student_no')->nullable();
             $table->string('email')->unique();
-            $table->string('provider')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('course')->nullable();
+            $table->string('year')->nullable();
+            $table->string('section')->nullable();
             $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('reg_step')->default('STEP1');
-            $table->string('status')->default('PENDING');
-            $table->string('remarks')->nullable();
-            $table->string('isSubmit')->default(0);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

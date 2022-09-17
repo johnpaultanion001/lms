@@ -13,16 +13,7 @@
     .bg-gradient-primary {
         background-image: linear-gradient(180deg, #2c2f7c 10%, #224abe 100%);
     }
-    .btn-google {
-        color: #fff;
-        background-color: #ea4335;
-        border-color: #ea4335;
-    }
-    .btn-facebook {
-        color: #fff;
-        background-color: #3b5998;
-        border-color: #3b5998;
-    }
+    
     h1 {
         font-size: 24px;
         font-weight: 700;
@@ -39,9 +30,9 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <img src="{{ asset('public/assets/img/ekyclogo.png') }}" alt="Logo" class="admin-logo mb-2">
-                                <p class="text-danger" id="text_warning">
-                                </p>
+                                <h1 class="m-3">
+                                    {{ trans('panel.site_title') }}
+                                </h1>
                             </div>
                             <form method="POST" action="{{ route('login') }}" class="user">
                             @csrf
@@ -72,17 +63,8 @@
                                     Login
                                 </button>
                                 <hr>
-                                <a href="javascript:;" id="googleLogin" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Login with Google
-                                </a>
-                                <a  href="javascript:;" id="facebookLogin" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                </a>
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
                             <div class="text-center">
                                 <a class="small" href="{{ url('/register') }}">Create an Account!</a>
                             </div>
@@ -97,23 +79,6 @@
 @endsection
 
 @section('script')
-<!-- Firebase files -->
-<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
-
-<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
-
-<!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
-<!-- firebase Conf -->
-<script type="text/javascript" src="{{ url('public/assets/js/firebase/firebase-conf.js') }}"></script>
-<!-- facebook provider -->
-<script type="text/javascript" src="{{ url('public/assets/js/firebase/facebook.js') }}"></script>
-<script type="text/javascript" src="{{ url('public/assets/js/firebase/google.js') }}"></script>
 
 <script> 
 
