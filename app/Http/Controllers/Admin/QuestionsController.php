@@ -19,8 +19,9 @@ class QuestionsController extends Controller
     {
         
         $questions = Question::all();
+        $categories = Category::all();
 
-        return view('admin.questions.index', compact('questions'));
+        return view('admin.questions.index', compact('questions','categories'));
     }
 
     public function create()

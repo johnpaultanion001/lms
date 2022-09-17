@@ -7,10 +7,23 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                     <h6 class="m-0 font-weight-bold text-primary">Questions</h6>
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Filter by category</div>
+                            <select id="filter" class="form-control">
+                                <option value="">Category</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{$cat->name ?? ''}}">{{$cat->name ?? ''}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                   
                 </div>
-                <div class="col-6 text-right">
+                <div class="col-md-6 text-right mt-2">
                     <a class="btn btn-success" href="{{ route("admin.questions.create") }}">
                         New Record
                     </a>
@@ -69,4 +82,12 @@
 
     
 </div>
+@endsection
+@section('scripts')
+<script>
+    $('#filter').on('change', function() {
+        var table = $('#dataTable').DataTable();
+        table.columns(2).search( this.value ).draw();
+    });
+</script>
 @endsection
