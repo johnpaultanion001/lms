@@ -13,9 +13,6 @@
                     <a class="nav-link active" aria-current="page" href="{{ url('admin/student/history') }}">History</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url('admin/student/welcome') }}">Privacy</a>
-                </li>
-                <li class="nav-item">
                     <div class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                             <div class="dropdown-menu">

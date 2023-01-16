@@ -27,8 +27,7 @@
                 <div class="text-center mb-4">
                     <h1 class="m-0">WELCOME IT STUDENTS!</h1>
                     <h6 class="text-white mt-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In leo tortor, aliquam vel auctor eget, consequat sed mi. Quisque varius urna ac hendrerit gravida. Nam ut consectetur libero. Donec non leo eu nulla vestibulum cursus. Introduction about the assessment, about services of ITE department
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In leo tortor, aliquam vel auctor eget, consequat sed mi. Quisque varius urna ac hendrerit gravida. Nam ut consectetur libero. Donec non leo eu nulla vestibulum cursus. Introduction about the assessment, about services of ITE department
+                    The ITE Program aims to substantially equip students with theoretical and conceptual knowledge in computer science; develop and strengthen skills in software development and project management in preparation for their work in the field of computing and/or Information technology.
                     </h6>
                     @php
                         $already_take = App\Models\Result::where('user_id', auth()->user()->id)

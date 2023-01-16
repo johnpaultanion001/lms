@@ -43,6 +43,22 @@ class UsersTableSeeder extends Seeder
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
+            [
+                'id'             => '3',
+                'name'          => 'Sample Student1',
+                'student_no'          => 'CS001',
+                'email'          => 'student1@student1.com',
+                'contact_number'           => '09776669978',
+                'gender'           => 'MALE',
+                'course'           => 'BSCS',
+                'year'            => '4th Year',
+                'section'           => 'BSCS1',
+                'password'       => '$2y$10$vUIzDlvfpu2yOATsPYcPaOTY/zgbgwViLIWSfZxSlmRBFV.g/fmOW',
+                'email_verified_at' => date("Y-m-d H:i:s"),
+                'remember_token' => null,
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
             
         ];
 
