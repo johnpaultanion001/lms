@@ -96,8 +96,38 @@
                                             <div class="form-group">
                                                 <label class="control-label" >Section: <span class="text-danger">*</span></label>
                                                 <select name="section" id="section" class="form-control">
-                                                    <option value="BSIT1" {{auth()->user()->section == 'BSIT1' ? 'selected' : '' }}>BSIT1</option>
-                                                    <option value="BSCS1" {{auth()->user()->section == 'BSCS1' ? 'selected' : '' }}>BSCS1</option>
+                                                  
+                                                    <option value="BSIT 1A" {{auth()->user()->section == 'BSIT 1A' ? 'selected' : '' }}>BSIT 1A</option>
+                                                    <option value="BSIT 1B" {{auth()->user()->section == 'BSIT 1B' ? 'selected' : '' }}>BSIT 1B</option>
+                                                    <option value="BSIT 1C" {{auth()->user()->section == 'BSIT 1C' ? 'selected' : '' }}>BSIT 1C</option>
+
+                                                    <option value="BSIT 2A" {{auth()->user()->section == 'BSIT 2A' ? 'selected' : '' }}>BSIT 2A</option>
+                                                    <option value="BSIT 2B" {{auth()->user()->section == 'BSIT 2B' ? 'selected' : '' }}>BSIT 2B</option>
+                                                    <option value="BSIT 2C" {{auth()->user()->section == 'BSIT 2C' ? 'selected' : '' }}>BSIT 2C</option>
+
+                                                    <option value="BSIT 3A" {{auth()->user()->section == 'BSIT 3A' ? 'selected' : '' }}>BSIT 3A</option>
+                                                    <option value="BSIT 3B" {{auth()->user()->section == 'BSIT 3B' ? 'selected' : '' }}>BSIT 3B</option>
+                                                    <option value="BSIT 3C" {{auth()->user()->section == 'BSIT 3C' ? 'selected' : '' }}>BSIT 3C</option>
+
+                                                    <option value="BSIT 4A" {{auth()->user()->section == 'BSIT 4A' ? 'selected' : '' }}>BSIT 4A</option>
+                                                    <option value="BSIT 4B" {{auth()->user()->section == 'BSIT 4B' ? 'selected' : '' }}>BSIT 4B</option>
+                                                    <option value="BSIT 4C" {{auth()->user()->section == 'BSIT 4C' ? 'selected' : '' }}>BSIT 4C</option>
+
+                                                    <option value="BSCS 1A" {{auth()->user()->section == 'BSCS 1A' ? 'selected' : '' }}>BSCS 1A</option>
+                                                    <option value="BSCS 1B" {{auth()->user()->section == 'BSCS 1B' ? 'selected' : '' }}>BSCS 1B</option>
+                                                    <option value="BSCS 1C" {{auth()->user()->section == 'BSCS 1C' ? 'selected' : '' }}>BSCS 1C</option>
+
+                                                    <option value="BSCS 2A" {{auth()->user()->section == 'BSCS 2A' ? 'selected' : '' }}>BSCS 2A</option>
+                                                    <option value="BSCS 2B" {{auth()->user()->section == 'BSCS 2B' ? 'selected' : '' }}>BSCS 2B</option>
+                                                    <option value="BSCS 2C" {{auth()->user()->section == 'BSCS 2C' ? 'selected' : '' }}>BSCS 2C</option>
+
+                                                    <option value="BSCS 3A" {{auth()->user()->section == 'BSCS 3A' ? 'selected' : '' }}>BSCS 3A</option>
+                                                    <option value="BSCS 3B" {{auth()->user()->section == 'BSCS 3B' ? 'selected' : '' }}>BSCS 3B</option>
+                                                    <option value="BSCS 3C" {{auth()->user()->section == 'BSCS 3C' ? 'selected' : '' }}>BSCS 3C</option>
+
+                                                    <option value="BSCS 4A" {{auth()->user()->section == 'BSCS 4A' ? 'selected' : '' }}>BSCS 4A</option>
+                                                    <option value="BSCS 4B" {{auth()->user()->section == 'BSCS 4B' ? 'selected' : '' }}>BSCS 4B</option>
+                                                    <option value="BSCS 4C" {{auth()->user()->section == 'BSCS 4C' ? 'selected' : '' }}>BSCS 4C</option>
                                                 </select>
                                             </div>
                                         </div>
