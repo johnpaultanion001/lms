@@ -1,6 +1,21 @@
 @extends('layouts.admin')
 @section('sub-title','RESPONDENTS')
 
+@section('styles')
+<style>
+    div.dataTables_wrapper div.dataTables_filter input {
+        margin-left: 0;
+        display: inline-block;
+        width: 100%;
+        border: solid 1px #111;
+        padding: 0 22px;
+        padding-left: 45px;
+        height: 50px;
+        font-size: 16px;
+        margin: 20px;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container-fluid">
 
@@ -65,6 +80,22 @@
 @endsection
 @section('scripts')
 <script>
+    $(function () {
+        let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+
+        $.extend(true, $.fn.dataTable.defaults, {
+            pageLength: 100,
+            bDestroy: true,
+            responsive: true,
+        });
+
+        $('#dataTable:not(.ajaxTable)').DataTable({ buttons: dtButtons });
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+            });
+    });
+
     $('#filter').on('change', function() {
         var table = $('#dataTable').DataTable();
         table.columns(3).search( this.value ).draw();
