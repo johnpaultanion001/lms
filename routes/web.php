@@ -38,6 +38,9 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
     // Results
     Route::get('/respondents', [Admin\ResultsController::class, 'index'])->name('respondents.index');
 
+    // Item Analysis
+    Route::get('/item_analysis', [Admin\ResultsController::class, 'item_analysis'])->name('respondents.item_analysis');
+
 });
 
 Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {

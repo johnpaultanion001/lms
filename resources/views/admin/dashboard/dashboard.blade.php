@@ -81,7 +81,18 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Gender</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fa-solid fa-person text-info"></i> {{$usersm}} <i class="fa-solid fa-person-dress text-danger"></i> {{$usersf}}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            
+                                <i class="fa-solid fa-person text-info"></i> 
+                                   <span class="genderAll">{{$usersm}}</span> 
+                                   <span class="genderBsit">{{$usersmbsit}} </span> 
+                                   <span class="genderBscs">{{$usersmbscs}} </span> 
+
+                                   <i class="fa-solid fa-person-dress text-danger"></i> 
+                                    <span class="genderAll">{{$usersf}}</span> 
+                                    <span class="genderBsit">{{$usersfbsit}} </span> 
+                                    <span class="genderBscs">{{$usersfbscs}} </span> 
+                                  </div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-venus-mars fa-2x text-gray-300"></i>
@@ -228,6 +239,8 @@
 @section('scripts')
 <script>
     $(function(){
+        $('.genderBscs').hide();
+        $('.genderBsit').hide();
         var data_it = JSON.parse(`<?php echo $data_results_bsit; ?>`);
         var chart_it = $("#myAreaChartIT");
 
@@ -404,10 +417,16 @@
             else if(filter == 'IT'){
                 $('.bsit').show();
                 $('.bscs').hide();
+                $('.genderBscs').hide();
+                $('.genderAll').hide();
+                $('.genderBsit').show();
             }
             else if(filter == 'CS'){
                 $('.bsit').hide();
                 $('.bscs').show();
+                $('.genderBscs').show();
+                $('.genderAll').hide();
+                $('.genderBsit').hide();
             }
         });
     });

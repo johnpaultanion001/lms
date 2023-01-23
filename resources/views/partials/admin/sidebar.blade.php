@@ -31,6 +31,14 @@
         <span>Respondents</span></a>
 </li>
    
+<li class="nav-item {{ request()->is('admin/item_analysis')  ? 'active' : '' }}">
+    <a class="nav-link" href="{{url('admin/item_analysis')}}">
+        <i class="fas fa-fw fa-list"></i>
+        <span>Item Analysis</span></a>
+</li>
+
+
+
 <button class="rounded-circle border-0" id="sidebarToggle"></button>
 
 

@@ -53,6 +53,7 @@
                             <th>Yr. & Sec</th>
                             <th>Course</th>
                             <th>Total Score</th>
+                            <th>Duration</th>
                             <th>Created At</th>
                             
                         </tr>
@@ -65,6 +66,7 @@
                             <td>{{ $result->year ?? '' }} / {{ $result->user->section ?? '' }}</td>
                             <td>{{ $result->course ?? '' }}</td>
                             <td>{{ $result->total_points ?? '' }}</td>
+                            <td>{{ $result->start_time->diffInMinutes($result->end_time) }} Min(s)</td>
                             <td>{{$result->created_at}}</td>
                         </tr>
                         @endforeach

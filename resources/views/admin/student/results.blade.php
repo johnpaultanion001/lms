@@ -169,10 +169,7 @@
 
                                         </div>
                                         
-                                        <h5 class="font-weight-bold">Bottom 3</h5>
-                                        <div id="bot">
-
-                                        </div>
+                                       
                                         <h5 class="font-weight-bold mt-2">Your score by category</h5>
                                         <div class="card shadow mt-2">
                                             <div class="card-body">

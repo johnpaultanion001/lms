@@ -113,37 +113,11 @@
                                         <div class="form-group">
                                             <label class="control-label" >Section: <span class="text-danger">*</span></label>
                                             <select name="section" id="section" class="form-control">
-                                                <option value="BSIT 1A" >BSIT 1A</option>
-                                                <option value="BSIT 1B" >BSIT 1B</option>
-                                                <option value="BSIT 1C" >BSIT 1C</option>
-
-                                                <option value="BSIT 2A" >BSIT 2A</option>
-                                                <option value="BSIT 2B" >BSIT 2B</option>
-                                                <option value="BSIT 2C" >BSIT 2C</option>
-
-                                                <option value="BSIT 3A" >BSIT 3A</option>
-                                                <option value="BSIT 3B" >BSIT 3B</option>
-                                                <option value="BSIT 3C" >BSIT 3C</option>
-
-                                                <option value="BSIT 4A" >BSIT 4A</option>
-                                                <option value="BSIT 4B" >BSIT 4B</option>
-                                                <option value="BSIT 4C" >BSIT 4C</option>
-
-                                                <option value="BSCS 1A" >BSCS 1A</option>
-                                                <option value="BSCS 1B" >BSCS 1B</option>
-                                                <option value="BSCS 1C" >BSCS 1C</option>
-
-                                                <option value="BSCS 2A" >BSCS 2A</option>
-                                                <option value="BSCS 2B" >BSCS 2B</option>
-                                                <option value="BSCS 2C" >BSCS 2C</option>
-
-                                                <option value="BSCS 3A" >BSCS 3A</option>
-                                                <option value="BSCS 3B" >BSCS 3B</option>
-                                                <option value="BSCS 3C" >BSCS 3C</option>
-
-                                                <option value="BSCS 4A" >BSCS 4A</option>
-                                                <option value="BSCS 4B" >BSCS 4B</option>
-                                                <option value="BSCS 4C" >BSCS 4C</option>
+                                                <option value="A" >A</option>
+                                                <option value="B" >B</option>
+                                                <option value="C" >C</option>
+                                                <option value="D" >D</option>
+                                                <option value="Irregular" >Irregular</option>
                                             </select>
                                         </div>
                                     </div>

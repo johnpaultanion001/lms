@@ -23,6 +23,14 @@ class AdminController extends Controller
         $usersf = User::where('gender', 'FEMALE')->count();
         $usersm = User::where('gender', 'MALE')->count();
 
+        $usersfbsit = User::where('gender', 'FEMALE')->where('course', 'BSIT')->count();
+        $usersmbsit = User::where('gender', 'MALE')->where('course', 'BSIT')->count();
+
+
+        $usersfbscs = User::where('gender', 'FEMALE')->where('course', 'BSCS')->count();
+        $usersmbscs = User::where('gender', 'MALE')->where('course', 'BSCS')->count();
+        
+
         $r_bsit = Result::where('course', 'BSIT')->count();
         $r_bscs = Result::where('course', 'BSCS')->count();
 
@@ -101,7 +109,7 @@ class AdminController extends Controller
 
         return view('admin.dashboard.dashboard', compact('users','categories','questions','usersm',
         'usersf','r_bsit','r_bscs','data_results_bsit','failed_bsit','passed_bsit',
-        'data_results_bscs','failed_bscs','passed_bscs'));
+        'data_results_bscs','failed_bscs','passed_bscs','usersfbsit','usersmbsit','usersfbscs','usersmbscs'));
         
     }
 }

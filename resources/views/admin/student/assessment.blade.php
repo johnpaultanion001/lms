@@ -19,7 +19,17 @@
 <section class="py-5 mt-3">
     <div class="container py-5">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-2 mb-2 ml-2 ">
+                <div class="card position-fixed" style="margin-left: -50px;">
+                    <h3 class="m-3">Category of Questions</h3>
+                        <ul class="list-group">
+                            @foreach($categories as $category)
+                                <li class="list-group-item select_category {{$loop->first ? 'active':''}}" category="{{$category->id}}" style="cursor: pointer;">{{$category->name ?? ''}}</li>
+                            @endforeach
+                        </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
                 
                 <div class="card">
                     <h3 class="m-3">Freshmen Assessment</h3>
@@ -46,25 +56,27 @@
                     <form method="POST" action="{{ route('admin.student.assessment.store') }}">
                         @csrf
                         @foreach($categories as $category)
-                            <div class="card mb-3">
-                                <div class="card-header">{{ $category->name }}</div>
-                
+                            <div class="card mb-3" id="category{{ $category->id }}">
+                                <div class="card-header bg-primary text-white">{{ $category->name }}</div>
                                 <div class="card-body">
                                     @foreach($category->categoryQuestions as $question)
                                         <div class="card @if(!$loop->last)mb-3 @endif">
-                                            <div class="card-header">{{ $question->question_text }}</div>
+                                            <div class="card-header text-white font-weight-bold bg-success">{{ $question->question_text }}</div>
                         
                                             <div class="card-body">
                                                 <input type="hidden" name="questions[{{ $question->id }}]" value="">
-                                                @foreach($question->questionOptions as $option)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="questions[{{ $question->id }}]" id="option-{{ $option->id }}" value="{{ $option->id }}"@if(old("questions.$question->id") == $option->id) checked @endif>
-                                                        <label class="form-check-label" for="option-{{ $option->id }}">
-                                                            {{ $option->option_text }}
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-
+                                                <ul class="list-group">
+                                                    @foreach($question->questionOptions as $option)
+                                                            <li class="list-group-item"> 
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="questions[{{ $question->id }}]" id="option-{{ $option->id }}" value="{{ $option->id }}"@if(old("questions.$question->id") == $option->id) checked @endif>
+                                                                    <label class="form-check-label" style="width: 100%; cursor: pointer;"for="option-{{ $option->id }}">
+                                                                        {{ $option->option_text }}
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                    @endforeach
+                                                </ul>
                                                 @if($errors->has("questions.$question->id"))
                                                     <span style="margin-top: .25rem; font-size: 80%; color: #e3342f;" role="alert">
                                                         <strong>{{ $errors->first("questions.$question->id") }}</strong>
@@ -78,12 +90,14 @@
                         @endforeach
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary btn-lg btn-wd text-uppercase">
+                            <div class="col-md-6  mx-auto">
+                                
+                                <button type="submit" class="btn btn-info btn-md btn-wd text-uppercase form-control">
                                     Submit
                                 </button>
                             </div>
                         </div>
+                        <input type="hidden" readonly value="{{$categories->count()}}" id="total_category">
                     </form>
                     </div>
                 </div>
@@ -94,8 +108,27 @@
 
 @endsection
 @section('scripts')
- <script>
-      
+<script>
+     $(document).ready(function()
+    {
+        var total = parseFloat($('#total_category').val()) + 1;
+        questions(1);
+        function questions($id) {
+            for(var i = 1; i < total; i++)
+            {
+                console.log(i);
+                $('#category'+i).hide();
+                $('#category'+$id).show();
+            } 
+        }
+
+        
+        $('.select_category').on('click', function() {
+           var id = $(this).attr('category');
+           questions(id);
+           $(this).addClass('active');
+        });
+    }); 
 </script>
 
 @endsection
