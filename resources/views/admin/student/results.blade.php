@@ -168,6 +168,11 @@
                                         <div id="top">
 
                                         </div>
+
+                                        <h5 class="font-weight-bold">Bottom 3</h5>
+                                        <div id="bot">
+
+                                        </div>
                                         
                                        
                                         <h5 class="font-weight-bold mt-2">Your score by category</h5>
@@ -179,6 +184,100 @@
                                             </div>
                                             
                                         </div>
+                                        <h5 class="font-weight-bold mt-2">LEARNING STYLE</h5>
+                                        @php
+                                            $learning_style_results = App\Models\LearningStyleResult::where('user_id', auth()->user()->id)->get();
+                                            $active = $learning_style_results->where('answer', 'Active')->count();
+                                            $reflective = $learning_style_results->where('answer', 'Reflective')->count();
+
+                                            $intuitive = $learning_style_results->where('answer', 'Intuitive')->count();
+                                            $sensing = $learning_style_results->where('answer', 'Sensing')->count();
+
+                                            $verbal = $learning_style_results->where('answer', 'Verbal')->count();
+                                            $visual = $learning_style_results->where('answer', 'Visual')->count();
+
+                                            $sequential = $learning_style_results->where('answer', 'Sequential')->count();
+                                            $global = $learning_style_results->where('answer', 'Global')->count();
+
+                                            $total_active_reflective = $active + $reflective;
+                                            $percent_active = $active / $total_active_reflective * 100;
+                                            $percent_reflective = $reflective / $total_active_reflective * 100;
+
+                                            $total_intuitive_sensing = $intuitive + $sensing;
+                                            $percent_intuitive = $intuitive / $total_intuitive_sensing * 100;
+                                            $percent_sensing = $sensing / $total_intuitive_sensing * 100;
+
+                                            $total_verbal_visual = $verbal + $visual;
+                                            $percent_verbal = $verbal / $total_verbal_visual * 100;
+                                            $percent_visual = $visual / $total_verbal_visual * 100;
+
+                                            $total_sequential_global = $sequential + $global;
+                                            $percent_sequential = $sequential / $total_sequential_global * 100;
+                                            $percent_global = $global / $total_sequential_global * 100;
+                                        @endphp
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_active}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center ">{{ number_format($percent_active ?? '' , 2, '.', ',') }}% ACTIVE</h6>
+                                            </div>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_reflective}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center ">{{ number_format($percent_reflective ?? '' , 2, '.', ',') }}% REFLECTIVE</h6>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_intuitive}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center text-uppercase">{{ number_format($percent_intuitive ?? '' , 2, '.', ',') }}% Intuitive</h6>
+                                            </div>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_sensing}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center text-uppercase">{{ number_format($percent_sensing ?? '' , 2, '.', ',') }}% Sensing</h6>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_verbal}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center text-uppercase">{{ number_format($percent_verbal ?? '' , 2, '.', ',') }}% Verbal</h6>
+                                            </div>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_visual}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center text-uppercase">{{ number_format($percent_visual ?? '' , 2, '.', ',') }}% Visual</h6>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_sequential}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center text-uppercase">{{ number_format($percent_sequential ?? '' , 2, '.', ',') }}% Sequential</h6>
+                                            </div>
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_global}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                <h6 class="justify-content-center text-uppercase">{{ number_format($percent_global ?? '' , 2, '.', ',') }}% Global</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <p class="m-3">
+                                                    What do my results mean?<br><br>
+                                                    According to the model on which the ILS is based, there are four dimensions of learning style, with each dimension having two opposite categories (such as active and reflective). The reported score for a dimension indicates your preference for one category or the other.
+                                                    <br>
+                                                    If your score for a dimension is 1 or 3, you are fairly well balanced on the two categories of that dimension, with only a mild preference for one or the other.
+                                                    <br>
+                                                    If your score for a dimension is 5 or 7, you have a moderate preference for one category of that dimension. You may learn less easily in an environment that fails to address that preference at least some of the time than you would in a more balanced environment.
+                                                    <br>
+                                                    If your score for a dimension is 9 or 11, you have a strong preference for one category of that dimension. You may have difficulty learning in an environment that fails to address that preference at least some of the time.
+                                                    <br>
+                                                    <br>
+                                                    We suggest that you print this page, so that when you look at the explanations of the different dimensions you will have a record of your preferences. When you close the page the information cannot be retrieved.
+                                                    <br>
+                                                    <br>
+                                                    For explanations of the dimensions and implications of your preferences, <a target="_blank" class="text-primary" href="https://www.engr.ncsu.edu/wp-content/uploads/drive/1WPAfj3j5o5OuJMiHorJ-lv6fON1C8kCN/styles.pdf">Click here</a>.
+                                                    <br>
+                                                    For more information about learning styles and the Index of Learning Styles, <a target="_blank" class="text-primary" href="https://educationdesignsinc.com/index-of-learning-styles/">Click here</a>.
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+                                        
+                                        
+                                        
                                         
                                     </div>
                                 </div>

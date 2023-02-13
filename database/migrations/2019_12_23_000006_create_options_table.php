@@ -14,6 +14,7 @@ class CreateOptionsTable extends Migration
             $table->longText('option_text');
 
             $table->integer('points')->nullable();
+            $table->string('value_learning_style')->nullable();
 
             $table->timestamps();
 

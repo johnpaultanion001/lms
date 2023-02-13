@@ -17,49 +17,107 @@ class CategoriesTableSeeder extends Seeder
 
         $categories = [
             [
-                'id'         => '1',
-                'name'       => 'Machine Learning',
+                'name'       => '1st category1',
+                'year'       => '1st Year',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id'         => '2',
-                'name'       => 'Java Programming',
+                'name'       => '1st category2',
+                'year'       => '1st Year',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id'         => '3',
-                'name'       => 'Hardware',
+                'name'       => '1st category3',
+                'year'       => '1st Year',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+
+            [
+                'name'       => '2nd category1',
+                'year'       => '2nd Year ',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id'         => '4',
-                'name'       => 'Web Development',
+                'name'       => '2nd category2',
+                'year'       => '2nd Year ',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id'         => '5',
-                'name'       => 'Communation',
+                'name'       => '2nd category3',
+                'year'       => '2nd Year ',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+
+            [
+                'name'       => '3rd category1',
+                'year'       => '3rd Year ',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id'         => '6',
-                'name'       => 'Python',
+                'name'       => '3rd category2',
+                'year'       => '3rd Year ',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
             [
-                'id'         => '7',
-                'name'       => 'PHP',
+                'name'       => '3rd category3',
+                'year'       => '3rd Year ',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'name'       => '4th category1',
+                'year'       => '4th Year ',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'name'       => '4th category2',
+                'year'       => '4th Year ',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'name'       => '4th category3',
+                'year'       => '4th Year ',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+
+            //LEARNING SYLE
+            [
+                'name'       => 'LEARNING STYLE PART 1',
+                'year'       => 'LEARNINGSTYLE',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'name'       => 'LEARNING STYLE PART 2',
+                'year'       => 'LEARNINGSTYLE',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'name'       => 'LEARNING STYLE PART 3',
+                'year'       => 'LEARNINGSTYLE',
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
+            ],
+            [
+                'name'       => 'LEARNING STYLE PART 4',
+                'year'       => 'LEARNINGSTYLE',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
             ],
         ];
-
+        
         
         Category::insert($categories);
     }

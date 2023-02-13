@@ -23,6 +23,7 @@ class Question extends Model
         'deleted_at',
         'category_id',
         'question_text',
+        'isLearningStyle',
     ];
 
     public function questionOptions()

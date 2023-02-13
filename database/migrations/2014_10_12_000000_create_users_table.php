@@ -24,10 +24,11 @@ return new class extends Migration
             $table->string('year')->nullable();
             $table->string('section')->nullable();
             $table->string('password')->nullable();
+            $table->boolean('isRemove')->default(false);
+            $table->boolean('isTakeLearningStyle')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

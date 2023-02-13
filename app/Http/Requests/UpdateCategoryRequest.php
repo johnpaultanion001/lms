@@ -20,6 +20,7 @@ class UpdateCategoryRequest extends FormRequest
             'name' => [
                 'required',
             ],
+            'year' => ['required'],
         ];
     }
 }

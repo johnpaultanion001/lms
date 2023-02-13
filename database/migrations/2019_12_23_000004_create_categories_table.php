@@ -12,10 +12,10 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-
+            $table->string('year');
+            $table->boolean('isRemove')->default(false);
             $table->timestamps();
 
-            $table->softDeletes();
         });
     }
 }

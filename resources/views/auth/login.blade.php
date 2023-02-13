@@ -19,18 +19,30 @@
         font-weight: 700;
         color: #2c2f7c;
     }
+    body{
+        background-image: url('{{ asset('assets/img/bg.jpg') }}') !important;
+        background-position: center !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
+    }
 </style>
+
 <div class="row h-100 justify-content-center align-items-center">
     <div class="col-xl-6 col-lg-6 col-md-9">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                  
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
+                            <h1 class="m-3">
+                                    <img src="assets/img/logo.jpg" alt="Girl in a jacket" width="150" height="150">
+                                   
+                                </h1>
                                 <h1 class="m-3">
+                                    
                                     {{ trans('panel.site_title') }}
                                 </h1>
                             </div>
@@ -65,9 +77,9 @@
                                 <hr>
                             </form>
                             <hr>
-                            <div class="text-center">
+                            <!-- <div class="text-center">
                                 <a class="small" href="{{ url('/register') }}">Create an Account!</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

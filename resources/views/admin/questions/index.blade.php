@@ -19,7 +19,15 @@
                                     <option value="{{$cat->name ?? ''}}">{{$cat->name ?? ''}}</option>
                                 @endforeach
                             </select>
-                        </div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Filter by year level</div>
+                                <select name="filter_year" id="filter_year" class="form-control">
+                                    <option value="1st Year" >1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                </select>
+                                                </div>
                     </div>
                    
                 </div>
@@ -39,6 +47,7 @@
                         <tr>
                             <th></th>
                             <th>ID</th>
+                            <th>Year Level</th>
                             <th>Category</th>
                             <th>Questions</th>
                             <th>Options</th>
@@ -59,6 +68,7 @@
                                 </form>
                             </td>
                             <td>{{ $question->id ?? '' }}</td>
+                            <td>{{ $question->category->year ?? '' }}</td>
                             <td>{{ $question->category->name ?? '' }}</td>
                             <td>{{ $question->question_text ?? '' }}</td>
                             <td>
@@ -86,6 +96,11 @@
 @section('scripts')
 <script>
     $('#filter').on('change', function() {
+        var table = $('#dataTable').DataTable();
+        table.columns(3).search( this.value ).draw();
+    });
+
+    $('#filter_year').on('change', function() {
         var table = $('#dataTable').DataTable();
         table.columns(2).search( this.value ).draw();
     });

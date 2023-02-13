@@ -1,6 +1,6 @@
 
 @extends('layouts.student')
-@section('sub-title','ASSESSMENT')
+@section('sub-title','LEARNING STYLE')
 
 @section('content')
 <style>
@@ -33,14 +33,13 @@
             <div class="col-md-10">
                 
                 <div class="card">
-                    <h3 class="m-3">Freshmen Assessment</h3>
+                    <h3 class="m-3">Index of Learning Styles Questionnaire</h3>
                     <p class="m-3">
                     PRIVACY POLICY: <br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In leo tortor, aliquam vel auctor eget, consequat sed mi. Quisque varius urna ac hendrerit gravida. Nam ut consectetur libero. Donec non leo eu nulla vestibulum cursus. 
+                    Your response data and learning style profile are not stored or sent to anyone other than you. They cannot be recovered once you have submitted the completed form and received the results.
                     <br><br>
                     DIRECTIONS: <br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In leo tortor, aliquam vel auctor eget, consequat sed mi. Quisque varius urna ac hendrerit gravida. Nam ut consectetur libero. Donec non leo eu nulla vestibulum cursus.  
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In leo tortor, aliquam vel auctor eget, consequat sed mi. Quisque varius urna ac hendrerit gravida. Nam ut consectetur libero. Donec non leo eu nulla vestibulum cursus. 
+                    Please provide us with your first and last name, which will be printed on the report of results that will be returned to you. (Note the Privacy Policy above if you are concerned about confidentiality.) You may only choose one answer for each question, and you must answer all questions before you can submit the form. If both answers to a question seem to apply to you, choose the one that applies more frequently throughout all your courses. When you have selected answers to all 44 questions, click on the "Submit" button at the end of the form.
 
                     </p>
                     <div class="card-body">
@@ -54,7 +53,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('admin.student.assessment.store') }}">
+                    <form method="POST" action="{{ route('admin.student.store_learning_style') }}">
                         @csrf
                         @foreach($categories as $category)
                             <div class="card mb-3 categories" id="category{{ $category->id }}">
@@ -65,13 +64,13 @@
                                             <div class="card-header text-white font-weight-bold bg-success">{{ $question->question_text }}</div>
                         
                                             <div class="card-body">
-                                                <input type="hidden" name="questions[{{ $question->id }}]" value="">
+                                                <input type="hidden" name="questionId[{{ $question->id }}]" value="{{ $question->id }}">
                                                 <ul class="list-group">
                                                     @foreach($question->questionOptions as $option)
                                                             <li class="list-group-item"> 
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="questions[{{ $question->id }}]" id="option-{{ $option->id }}" value="{{ $option->id }}"@if(old("questions.$question->id") == $option->id) checked @endif>
-                                                                    <label class="form-check-label" style="width: 100%; cursor: pointer;"for="option-{{ $option->id }}">
+                                                                    <input class="form-check-input" type="radio" name="questions[{{ $question->id }}]" id="option-{{ $option->id }}" required value="{{ $option->value_learning_style }}"@if(old("questions.$question->id") == $option->id) checked @endif >
+                                                                    <label class="form-check-label" style="width: 100%; cursor: pointer;" for="option-{{ $option->id }}">
                                                                         {{ $option->option_text }}
                                                                     </label>
                                                                 </div>

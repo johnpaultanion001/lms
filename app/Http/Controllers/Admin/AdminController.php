@@ -46,9 +46,9 @@ class AdminController extends Controller
         if($r_bsit < 1 & $users_bsit < 1){
             $percent_bscs = 0;
         }else{
-            $percent_bsit = $r_bsit / $users_bsit * 100;
-            $failed_bsit = $failed_it / $r_bsit * 100;
-            $passed_bsit  = $passed_it / $r_bsit * 100;
+            $percent_bsit = $r_bsit ?? 1 / $users_bsit ?? 1 * 100;
+            $failed_bsit = $failed_it ?? 1 / $r_bsit ?? 1 * 100;
+            $passed_bsit  = $passed_it ?? 1 / $r_bsit ?? 1 * 100;
 
             $percent_bsit = number_format($percent_bsit, 0, '.', ',');
             $failed_bsit = number_format($failed_bsit, 0, '.', ',');
@@ -58,9 +58,9 @@ class AdminController extends Controller
         if($r_bscs < 1 & $users_bscs < 1){
             $percent_bscs = 0;
         }else{
-            $percent_bscs = $r_bscs / $users_bscs * 100;
-            $failed_bscs = $failed_cs / $r_bscs * 100;
-            $passed_bscs  = $passed_cs / $r_bscs * 100;
+            $percent_bscs = $r_bscs ?? 1 / $users_bscs ?? 1 * 100;
+            $failed_bscs = $failed_cs ?? 1 / $r_bscs ?? 1 * 100;
+            $passed_bscs  = $passed_cs ?? 1 / $r_bscs ?? 1 * 100;
 
             $percent_bscs = number_format($percent_bscs, 0, '.', ',');
             $failed_bscs = number_format($failed_bscs, 0, '.', ',');

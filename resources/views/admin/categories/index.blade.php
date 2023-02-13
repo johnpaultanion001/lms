@@ -11,6 +11,15 @@
                     <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
                 </div>
                 <div class="col-6 text-right">
+                <div class="form-group">
+                    <select name="filter_year" id="filter_year" class="form-control">
+                        <option value="" >FILTER BY YEAR LEVEL</option>
+                        <option value="1st Year" >1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                </div>
                     <a class="btn btn-success" href="{{ route("admin.categories.create") }}">
                         New Record
                     </a>
@@ -25,6 +34,7 @@
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Year Level</th>
                             <th>ID</th>
                             <th>Title</th>
                             <th>Created At</th>
@@ -44,6 +54,7 @@
                                     <input type="submit" class="btn btn-sm btn-danger" value="Remove">
                                 </form>
                             </td>
+                            <td>{{ $category->year ?? '' }}</td>
                             <td>{{ $category->id ?? '' }}</td>
                             <td>{{ $category->name ?? '' }}</td>
                             <td>{{$category->created_at}}</td>
@@ -65,4 +76,17 @@
 
     
 </div>
+@endsection
+
+@section('scripts')
+<script>
+     $(document).ready(function()
+    {
+        $('#filter_year').on('change', function () {
+          var table = $('#dataTable').DataTable();
+          table.columns(1).search( this.value ).draw();
+        });
+    }); 
+</script>
+
 @endsection

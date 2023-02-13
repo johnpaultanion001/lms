@@ -13,7 +13,7 @@ class CategoriesController extends Controller
    
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::where('isRemove', false)->whereNotIn('year', ['LEARNINGSTYLE'])->latest()->get();
         return view('admin.categories.index', compact('categories'));
     }
    
@@ -45,7 +45,9 @@ class CategoriesController extends Controller
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        $category->update([
+            'isRemove' => true,
+        ]);
 
         return back();
     }

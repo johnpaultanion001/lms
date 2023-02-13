@@ -8,6 +8,7 @@ use App\Models\User;
 use Validator;
 use File;
 use App\Models\Category;
+use App\Models\LearningStyleResult;
 use App\Models\Question;
 use App\Models\Option;
 use App\Models\Result;
@@ -31,7 +32,7 @@ class StudentController extends Controller
                                 ->where('year', auth()->user()->year)
                                 ->first();
         
-        $categories = Category::with(['categoryQuestions' => function ($query) {
+        $categories = Category::where('isRemove', false)->whereNotIn('year', ['LEARNINGSTYLE'])->where('year',auth()->user()->year)->with(['categoryQuestions' => function ($query) {
             $query->inRandomOrder()
                 ->with(['questionOptions' => function ($query) {
                     $query->inRandomOrder();
@@ -49,7 +50,40 @@ class StudentController extends Controller
                 'start_time' => Carbon::now(),
             ]
         );
-        return view('admin.student.assessment', compact('categories'));
+
+        $category_first =  $categories->first();
+        return view('admin.student.assessment', compact('categories','category_first'));
+        
+        
+    }
+
+    public function learning_style(){
+
+        $already_take = Result::where('user_id', auth()->user()->id)
+                                ->where('year', auth()->user()->year)
+                                ->first();
+        
+        $categories = Category::where('isRemove', false)->where('year', ['LEARNINGSTYLE'])->with(['categoryQuestions' => function ($query) {
+            $query->inRandomOrder()
+                ->with(['questionOptions' => function ($query) {
+                    $query->inRandomOrder();
+                }]);
+        }])
+            ->whereHas('categoryQuestions')
+            ->get();
+        Result::updateOrCreate(
+            [
+                'user_id' => auth()->user()->id,
+                'year'  => auth()->user()->year,
+            ],
+            [
+                'user_id' => auth()->user()->id,
+                'start_time' => Carbon::now(),
+            ]
+        );
+
+        $category_first =  $categories->first();
+        return view('admin.student.learning_style', compact('categories','category_first'));
         
         
     }
@@ -96,6 +130,30 @@ class StudentController extends Controller
 
         return redirect()->route('admin.student.assessment.show', $result->id);
     }
+    public function store_learning_style(Request $request)
+    {
+        $options = $request->input('questions');
+        foreach($options as $key => $data){
+            LearningStyleResult::updateOrCreate(
+                [
+                    'user_id'   => auth()->user()->id,
+                    'question_id'   => $key,
+                ],
+                [
+                    'user_id'   => auth()->user()->id,
+                    'question_id'   => $key,
+                    'answer'    => $data,
+                ]
+            );
+        }
+        auth()->user()->update([
+            'isTakeLearningStyle'   => true,
+        ]);
+
+       return redirect()->route('admin.student.welcome');
+    }
+
+    
 
     public function show($result_id)
     {
@@ -136,7 +194,10 @@ class StudentController extends Controller
     public function result_category($result_id){
         $result = Result::where('id', $result_id)->first();
         
-        $categories = Category::latest()->get();
+        $categories = Category::where('isRemove', false)
+        ->whereNotIn('year', ['LEARNINGSTYLE'])
+        ->where('year', auth()->user()->year)
+        ->latest()->get();
 
         foreach ($categories as $category) {
             $points = QuestionResult::where('category_id', $category->id)
@@ -147,7 +208,7 @@ class StudentController extends Controller
                                     ->where('result_id', $result_id)
                                     ->count();
 
-            $percent = $points / $questions;
+            $percent = $points / $questions ?? 1 ;
             $percent = $percent * 100;
             $percent = number_format($percent, 2, '.', ',');       
 

@@ -35,9 +35,19 @@
                                                     ->first();
                     @endphp
                     @if($already_take == null)
-                        <a href="/admin/student/assessment" class="btn btn-primary m-5">Take Assessment</a>
+                        @if(auth()->user()->isTakeLearningStyle == false)
+                            <a href="/admin/student/learning_style" class="btn btn-success btn-lg m-5 text-white">Take Learning Style</a>
+                       @else 
+                            <a href="/admin/student/assessment" class="btn btn-primary m-5 btn-lg">Take Assessment</a>
+                        @endif
+
+                        
                     @elseif($already_take->end_time == null)
-                        <a href="/admin/student/assessment" class="btn btn-primary m-5">Take Assessment</a>    
+                        @if(auth()->user()->isTakeLearningStyle == false)
+                            <a href="/admin/student/learning_style" class="btn btn-success btn-lg m-5 text-white">Take Learning Style</a>
+                        @else 
+                            <a href="/admin/student/assessment" class="btn btn-primary m-5 btn-lg">Take Assessment</a>
+                        @endif
                     @else
                         <a href="/admin/student/results/{{$already_take->id}}" class="btn btn-secondary m-5 text-white">Already Completed Assessment</a>
                     @endif

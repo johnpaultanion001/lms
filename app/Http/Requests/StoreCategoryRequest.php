@@ -20,6 +20,7 @@ class StoreCategoryRequest extends FormRequest
             'name' => [
                 'required',
             ],
+            'year' => ['required'],
         ];
     }
 }

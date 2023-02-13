@@ -25,7 +25,7 @@ class ResultsController extends Controller
     }
 
     public function item_analysis(){
-        $categories = Category::with(['categoryQuestions' => function ($query) {
+        $categories = Category::where('isRemove', false)->with(['categoryQuestions' => function ($query) {
             $query->inRandomOrder()
                 ->with(['questionOptions' => function ($query) {
                     $query->inRandomOrder();

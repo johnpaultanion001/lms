@@ -28,7 +28,8 @@
                 <div class="col-md-12 m-2">
                 <h6 class="m-0 font-weight-bold text-primary">Filter by category</h6>
                     @foreach($categories as $category)
-                        <button class="btn btn-primary select_category" category="{{$category->id}}">{{$category->name}}</button>
+                        <button class="btn btn-primary select_category m-1" category="{{$category->id}}">{{$category->name}}</button>
+                        
                     @endforeach
                 </div>
                

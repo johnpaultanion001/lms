@@ -19,7 +19,7 @@ class QuestionsController extends Controller
     {
         
         $questions = Question::all();
-        $categories = Category::all();
+        $categories = Category::where('isRemove', false)->whereNotIn('year', ['LEARNINGSTYLE'])->latest()->get();
 
         return view('admin.questions.index', compact('questions','categories'));
     }
@@ -27,7 +27,7 @@ class QuestionsController extends Controller
     public function create()
     {
        
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = Category::where('isRemove', false)->whereNotIn('year', ['LEARNINGSTYLE'])->pluck('name', 'id');
 
         return view('admin.questions.create', compact('categories'));
     }
@@ -57,7 +57,7 @@ class QuestionsController extends Controller
     public function edit(Question $question)
     {
         
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = Category::where('isRemove', false)->whereNotIn('year', ['LEARNINGSTYLE'])->pluck('name', 'id');
 
         $question->load('category');
 

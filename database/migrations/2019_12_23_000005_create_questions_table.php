@@ -12,6 +12,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
 
             $table->longText('question_text');
+            $table->boolean('isLearningStyle')->default(false);
 
             $table->timestamps();
 

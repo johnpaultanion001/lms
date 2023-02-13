@@ -3,9 +3,13 @@
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
-   
-    <div class="sidebar-brand-text mx-3">{{ trans('panel.site_title') }}</div>
+<img src="/assets/img/logo.jpg" alt="logo" width="50" height="50"> 
+    
 </a>
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
+<div class="sidebar-brand-text mx-3">{{ trans('panel.site_title') }}</div>
+</a>
+
 
 <hr class="sidebar-divider my-0">
 
@@ -13,6 +17,11 @@
     <a class="nav-link" href="{{url('admin/dashboard')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
+</li>
+<li class="nav-item {{ request()->is('admin/students') || request()->is('admin/students/*')  ? 'active' : '' }}">
+    <a class="nav-link" href="{{url('admin/students')}}">
+        <i class="fas fa-fw fa-list"></i>
+        <span>Students</span></a>
 </li>
 <li class="nav-item {{ request()->is('admin/categories') || request()->is('admin/categories/*')  ? 'active' : '' }}">
     <a class="nav-link" href="{{url('admin/categories')}}">
