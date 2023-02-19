@@ -15,6 +15,8 @@ use App\Models\Result;
 use App\Http\Requests\StoreTestRequest;
 use Carbon\Carbon;
 use App\Models\QuestionResult;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
 
 
 class StudentController extends Controller
@@ -272,6 +274,28 @@ class StudentController extends Controller
     public function history(){
         $results = Result::where('user_id', auth()->user()->id)->latest()->get();
         return view('admin.student.history', compact('results')); 
+    }
+
+    public function changepassword(Request $request , User $user)
+    {
+        date_default_timezone_set('Asia/Manila');
+        $validated =  Validator::make($request->all(), [
+            'current_password' => ['required',new MatchOldPassword],
+            'new_password' => ['required'],
+            'confirm_password' => ['required','same:new_password'],
+           
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json(['errors' => $validated->errors()]);
+        }
+
+        User::find($user->id)->update([
+            
+            'password' => Hash::make($request->input('new_password')),
+          
+        ]);
+        return response()->json(['success' => 'Updated Successfully.']);
     }
     
 }

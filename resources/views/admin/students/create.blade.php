@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="name">Name  <span class="text-danger">*</span></label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" >
+                <input class="form-control text-uppercase {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" >
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -39,15 +39,7 @@
                     </div>
                 @endif
             </div>
-            <div class="form-group">
-                <label class="control-label" >Contact Number <span class="text-danger">*</span></label>
-                <input type="number" class="form-control form-control-user @error('contact_number') is-invalid @enderror" id="contact_number" name="contact_number" value="{{ old('contact_number', '') }}"  >
-                @error('contact_number')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+            
             <div class="form-group">
                 <label class="control-label" >Gender <span class="text-danger">*</span></label>
                 <select name="gender" id="gender" class="form-control">
@@ -80,19 +72,6 @@
                     <option value="D" >D</option>
                     <option value="Irregular" >Irregular</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label class="control-label" >Password: <span class="text-danger">*</span></label>
-                <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" placeholder="Password" id="password" name="password">
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label class="control-label" >Repeat Password: <span class="text-danger">*</span></label>
-                <input type="password" class="form-control form-control-user" placeholder="Repeat Password" id="password-confirm" name="password_confirmation" >
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-wd text-uppercase" type="submit">

@@ -45,8 +45,11 @@
         <i class="fas fa-fw fa-list"></i>
         <span>Item Analysis</span></a>
 </li>
-
-
+<li class="nav-item {{ request()->is('admin/references') || request()->is('admin/references/*')  ? 'active' : '' }}">
+    <a class="nav-link" href="{{url('admin/references')}}">
+        <i class="fas fa-fw fa-list"></i>
+        <span>References</span></a>
+</li>
 
 <button class="rounded-circle border-0" id="sidebarToggle"></button>
 

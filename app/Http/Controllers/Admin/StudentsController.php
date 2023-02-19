@@ -31,12 +31,11 @@ class StudentsController extends Controller
             'name'  => $request->input('name'),
             'student_no'  => $request->input('student_no'),
             'email'  => $request->input('email'),
-            'contact_number'  => $request->input('contact_number'),
             'gender'  => $request->input('gender'),
             'course'  => $request->input('course'),
             'year'  => $request->input('year'),
             'section'  => $request->input('section'),
-            'password' => Hash::make($request->input('password'))
+            'password' => Hash::make(strtoupper($request->input('name'))),
         ]);
         RoleUser::insert([
             'user_id' => $student->id,
@@ -59,7 +58,6 @@ class StudentsController extends Controller
             'name'  => $request->input('name'),
             'student_no'  => $request->input('student_no'),
             'email'  => $request->input('email'),
-            'contact_number'  => $request->input('contact_number'),
             'gender'  => $request->input('gender'),
             'course'  => $request->input('course'),
             'year'  => $request->input('year'),

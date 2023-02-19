@@ -40,15 +40,7 @@
                     </div>
                 @endif
             </div>
-            <div class="form-group">
-                <label class="control-label" >Contact Number <span class="text-danger">*</span></label>
-                <input type="number" class="form-control form-control-user @error('contact_number') is-invalid @enderror" id="contact_number" name="contact_number" value="{{ old('contact_number', $student->contact_number) }}"  >
-                @error('contact_number')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+          
             <div class="form-group">
                 <label class="control-label" >Gender <span class="text-danger">*</span></label>
                 <select name="gender" id="gender" class="form-control">

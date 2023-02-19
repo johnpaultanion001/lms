@@ -31,9 +31,14 @@ Route::prefix('admin')->as('admin.')->middleware(['auth'])->group(function() {
     Route::get('/student/update_account', [Admin\StudentController::class, 'update'])->name('student.update');
     Route::post('/student/update_account/{user_id}', [Admin\StudentController::class, 'update_account'])->name('student.update_account');
     Route::get('/student/history', [Admin\StudentController::class, 'history'])->name('student.history');
+    Route::put('/student/changepassword/{user}', [Admin\StudentController::class, 'changepassword'])->name('student.changepassword');
     
     // Categorirs
     Route::resource('categories', Admin\CategoriesController::class);
+
+    // references
+    Route::resource('references', Admin\ReferenceController::class);
+
     // Questions
    
     Route::resource('questions',  Admin\QuestionsController::class);

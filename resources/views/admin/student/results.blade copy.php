@@ -198,115 +198,24 @@
                                                 $result_part1Text = "B";
                                             }
 
-                                            $intuitive = $learning_style_results->where('answer', 'Intuitive')->count();
-                                            $sensing = $learning_style_results->where('answer', 'Sensing')->count();
-
-                                            if($sensing > $intuitive){
-                                                $result_part2 = $sensing - $intuitive;
-                                                $result_part2Text = "A";
-                                            }else{
-                                                $result_part2 = $intuitive - $sensing;
-                                                $result_part2Text = "B";
-                                            }
-
-                                            
-                                            $visual = $learning_style_results->where('answer', 'Visual')->count();
-                                            $verbal = $learning_style_results->where('answer', 'Verbal')->count();
-
-                                            if($visual > $verbal){
-                                                $result_part3 = $visual - $verbal;
-                                                $result_part3Text = "A";
-                                            }else{
-                                                $result_part3 = $verbal - $visual;
-                                                $result_part3Text = "B";
-                                            }
-
-                                            $sequential = $learning_style_results->where('answer', 'Sequential')->count();
-                                            $global = $learning_style_results->where('answer', 'Global')->count();
-
-                                            if($sequential > $global){
-                                                $result_part4 = $sequential - $global;
-                                                $result_part4Text = "A";
-                                            }else{
-                                                $result_part4 = $global - $sequential;
-                                                $result_part4Text = "B";
-                                            }
-
-                                            $total_active_reflective = $active + $reflective;
-                                            $percent_active = $active / $total_active_reflective * 100;
-                                            $percent_reflective = $reflective / $total_active_reflective * 100;
-
-                                            $total_intuitive_sensing = $intuitive + $sensing;
-                                            $percent_intuitive = $intuitive / $total_intuitive_sensing * 100;
-                                            $percent_sensing = $sensing / $total_intuitive_sensing * 100;
-
-                                            $total_verbal_visual = $verbal + $visual;
-                                            $percent_verbal = $verbal / $total_verbal_visual * 100;
-                                            $percent_visual = $visual / $total_verbal_visual * 100;
-
-                                            $total_sequential_global = $sequential + $global;
-                                            $percent_sequential = $sequential / $total_sequential_global * 100;
-                                            $percent_global = $global / $total_sequential_global * 100;
                                         @endphp
-                                         
-                                        {{$result_part1}} {{$result_part1Text == 'A' ? 'ACTIVE':'REFLECTIVE'}} > {{$result_part2}} {{$result_part2Text == 'A' ? 'SENSING':'INTUITIVE'}} >
-                                        {{$result_part3}} {{$result_part3Text == 'A' ? 'VISUAL':'VERBAL'}} > {{$result_part4}} {{$result_part4Text == 'A' ? 'SEQUENTIAL':'GLOBAL'}}
-                                        <div class="progress" style="height: 40px;">
-                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_active}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center ">{{$result_part1Text == 'A' ? $result_part1:''}} ACTIVE</h6>
-                                            </div>
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_reflective}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center ">{{$result_part1Text == 'B' ? $result_part1:''}} REFLECTIVE</h6>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="progress" style="height: 40px;">
-                                            <div class="progress-bar " role="progressbar" style="width: {{$percent_sensing}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center text-uppercase">{{$result_part2Text == 'A' ? $result_part2:''}} Sensing</h6>
-                                            </div>
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_intuitive}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center text-uppercase">{{$result_part2Text == 'B' ? $result_part2:''}} Intuitive</h6>
-                                            </div>
-                                        </div>
-
-                                        <br>
-                                        <div class="progress" style="height: 40px;">
-                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_visual}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center text-uppercase">{{$result_part3Text == 'A' ? $result_part3:''}} Visual</h6>
-                                            </div>
-                                            <div class="progress-bar  bg-success" role="progressbar" style="width: {{$percent_verbal}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center text-uppercase">{{$result_part3Text == 'B' ? $result_part3:''}} Verbal</h6>
-                                            </div>
+                                        <div>
+                                            {{$active}} and {{$reflective}}
+                                            {{$result_part1}}{{$result_part1Text}}
                                            
-                                        </div>
 
-                                        <br>
-                                        <div class="progress" style="height: 40px;">
-                                            <div class="progress-bar" role="progressbar" style="width: {{$percent_sequential}}%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center text-uppercase">{{$result_part4Text == 'A' ? $result_part4:''}} Sequential</h6>
-                                            </div>
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{$percent_global}}%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                                <h6 class="justify-content-center text-uppercase">{{$result_part4Text == 'B' ? $result_part4:''}} Global</h6>
+                                            <div class="card" id="container" style="height: 200px;">
+
                                             </div>
                                         </div>
+                                        
+                                        <br>
+                                        
                                         <div class="card">
                                             <div class="card-body">
                                                 <p class="m-3">
                                                     What do my results mean?<br><br>
-                                                    @if($result_part1 > $result_part2 & $result_part3 & $result_part4)
-                                                    <img src="/assets/img/active_reflective.png" alt="">
-                                                    @endif
-                                                    @if($result_part2 > $result_part1 & $result_part3 & $result_part4)
-                                                    <img src="/assets/img/part2.png" alt="">
-                                                    @endif
-                                                    @if($result_part3 > $result_part1 & $result_part2 & $result_part4)
-                                                    <img src="/assets/img/part3.png" alt="">
-                                                    @endif
-                                                    @if($result_part4 > $result_part1 & $result_part2 & $result_part3)
-                                                    <img src="/assets/img/part4.png" alt="">
-                                                    @endif
-                                                    
-                                                    <!-- According to the model on which the ILS is based, there are four dimensions of learning style, with each dimension having two opposite categories (such as active and reflective). The reported score for a dimension indicates your preference for one category or the other.
+                                                    According to the model on which the ILS is based, there are four dimensions of learning style, with each dimension having two opposite categories (such as active and reflective). The reported score for a dimension indicates your preference for one category or the other.
                                                     <br>
                                                     If your score for a dimension is 1 or 3, you are fairly well balanced on the two categories of that dimension, with only a mild preference for one or the other.
                                                     <br>
@@ -320,11 +229,13 @@
                                                     <br>
                                                     For explanations of the dimensions and implications of your preferences, <a target="_blank" class="text-primary" href="https://www.engr.ncsu.edu/wp-content/uploads/drive/1WPAfj3j5o5OuJMiHorJ-lv6fON1C8kCN/styles.pdf">Click here</a>.
                                                     <br>
-                                                    For more information about learning styles and the Index of Learning Styles, <a target="_blank" class="text-primary" href="https://educationdesignsinc.com/index-of-learning-styles/">Click here</a>. -->
+                                                    For more information about learning styles and the Index of Learning Styles, <a target="_blank" class="text-primary" href="https://educationdesignsinc.com/index-of-learning-styles/">Click here</a>.
                                                 </p>
                                             </div>
                                            
                                         </div>
+                                        
+                                            
                                         
                                         
                                         
@@ -343,7 +254,7 @@
 
 @endsection
 @section('scripts')
-
+<script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js" type="text/javascript"></script>
  <script>
 $(document).ready(function(){
 
@@ -428,6 +339,71 @@ $(document).ready(function(){
             data: data,
             options: options
         });
+
+
+        anychart.onDocumentReady(function () {
+  
+        // create a bar chart
+        var chart = anychart.bar();
+
+        // data
+        var winlossData = [
+            [9, 1, "ACTIVE / RELECTIVE"],
+            [0, 9, "SENSING / INTUTIVE"],
+            [0, 7, "VISUAL / VERBAL"],
+            [0, 8, "SEQUENTIAL / GLOBAL"]
+        ];
+
+        // configure a function to create series
+        var createSeries = function (columnNumber, name) {
+            var data = [];
+            for (var i = 0; i < winlossData.length; i++) {
+            var value = winlossData[i][columnNumber];
+            var center = 0;
+            if (name === "Wins") {
+                data.push({
+                x: winlossData[i][2],
+                low: center,
+                high: center + value,
+                value: value
+                });
+            } else {
+                data.push({
+                x: winlossData[i][2],
+                low: -center,
+                high: -center - value,
+                value: value
+                });
+            }
+            }
+            
+            var series = chart.rangeBar(data);
+            series.name(name);
+        };
+
+        // create series
+        createSeries(0, "Active");
+        createSeries(1, "Reflective");
+
+        // set the chart title
+        chart
+            .title()
+            .enabled(true)
+            .text("LEARNING STYLE");
+
+       
+        
+        // create a stacked bar chart from the multi-series bar chart
+        chart.yScale().stackMode("value");
+
+        // set a container id for the chart
+        chart.container("container");
+        
+        // initiate chart drawing
+        chart.draw();
+
+        });
+
 
 
 });
