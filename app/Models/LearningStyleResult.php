@@ -13,6 +13,7 @@ class LearningStyleResult extends Model
         'user_id',
         'question_id',
         'answer',
+        'option_id',
        
     ];
 

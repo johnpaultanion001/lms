@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->boolean('isRemove')->default(false);
             $table->boolean('isTakeLearningStyle')->default(false);
+            $table->string('ls_result')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

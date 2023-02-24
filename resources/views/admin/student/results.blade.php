@@ -289,38 +289,116 @@
                                                 <h6 class="justify-content-center text-uppercase">{{$result_part4Text == 'B' ? $result_part4:''}} Global</h6>
                                             </div>
                                         </div>
-                                        <div class="card">
+                                        <br>
+                                        <br>
+                                        <div class="card" style="border: solid 1px #111;">
+                                            <div class="card-body">
+                                                <h5>Explanation of scores</h5>
+                                                <p>
+                                                    If your score on a scale is 1-3, you have a mild preference for one or the other dimension but you are essentially well balanced. 
+                                                    <br>
+                                                    If your score on a scale is 5-7, you have a moderate preference for one dimension of the scale and will learn more easily in a teaching environment which favours that dimension.
+                                                    <br>
+                                                    If your score on a scale is 9-11, you have a strong preference for one dimension of the scale. You may have real difficulty learning in an environment which does not support that preference.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="card" style="border: solid 1px #111;">
                                             <div class="card-body">
                                                 <p class="m-3">
-                                                    What do my results mean?<br><br>
-                                                    @if($result_part1 > $result_part2 & $result_part3 & $result_part4)
-                                                    <img src="/assets/img/active_reflective.png" alt="">
-                                                    @endif
-                                                    @if($result_part2 > $result_part1 & $result_part3 & $result_part4)
-                                                    <img src="/assets/img/part2.png" alt="">
-                                                    @endif
-                                                    @if($result_part3 > $result_part1 & $result_part2 & $result_part4)
-                                                    <img src="/assets/img/part3.png" alt="">
-                                                    @endif
-                                                    @if($result_part4 > $result_part1 & $result_part2 & $result_part3)
-                                                    <img src="/assets/img/part4.png" alt="">
-                                                    @endif
+                                                    <h5>Recommendation</h5>
+                                                    @php
+                                                        $results = array(
+                                                                "ACTIVEREFLECTIVE" => $result_part1,
+                                                                "SENSINGINTUITIVE" => $result_part2,
+                                                                "VISUALVERBAL" => $result_part3,
+                                                                "SEQUENTIALGLOBAL" => $result_part4,
+                                                            );
+                                                            asort($results);
+                                                    @endphp
+                                                    @foreach($results as $key => $value)
+                                                                @if($key == "ACTIVEREFLECTIVE")
+                                                                    @if($result_part1Text == 'A')
+                                                                        <h6>How can active learners help themselves? </h6>
+                                                                        <p>If you are an active learner in a class that allows little or no class time for discussion or problem-solving activities, you should try to compensate for these deficits when you study. Study in a group where members take turns explaining different topics to one another. Collaborate with others to predict what questions will be asked on the next test and how you will respond. You will always remember information better if you put it to use.</p>
+                                                                        @php
+                                                                            App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                "ls_result" => "ACTIVE",    
+                                                                            ]);
+                                                                        @endphp
+                                                                    @else
+                                                                        <h6>How can reflective learners help themselves? </h6>
+                                                                        <p>If you are a reflective learner in a class that allows little or no class time for thinking about new information, you should try to compensate for this lack when you study. Don't just read or memorize the material; take breaks to review what you've read and consider potential questions or applications. You might find it useful to write short summaries of readings or class notes in your own words. This may take more time, but it will help you retain the information more effectively.</p>
+                                                                        @php
+                                                                            App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                "ls_result" => "REFLECTIVE",    
+                                                                            ]);
+                                                                        @endphp
+                                                                    @endif
+                                                                @endif
+                                                                @if($key == "SENSINGINTUITIVE")
+                                                                    <br>
+                                                                        @if($result_part2Text == 'A')
+                                                                            <h6>How can sensing learners help themselves? </h6>
+                                                                            <p>Sensors remember and comprehend information better when they can see how it relates to the real world. You may struggle if you are in a class where the majority of the material is abstract and theoretical. Inquire with your instructor about specific examples of concepts and procedures, and how the concepts apply in practice. If the teacher does not provide enough details, look for them in your course text or other references, or brainstorm with friends or classmates.</p>
+                                                                            @php
+                                                                                App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                    "ls_result" => "SENSING",    
+                                                                                ]);
+                                                                            @endphp
+                                                                        @else
+                                                                            <h6>How can intuitive learners help themselves? </h6>
+                                                                            <p>Many college lecture classes are designed for intuitive students. However, if you are an intuitor and are in a class that focuses primarily on memorization and rote substitution in formulas, you may experience boredom. Request interpretations or theories from your instructor, or try to find the connections yourself. Because you are impatient with details and dislike repetition, you may be prone to making careless mistakes on tests (as in checking your completed solutions). Before you begin answering, read the entire question and double-check your answers.</p>
+                                                                            @php
+                                                                                App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                    "ls_result" => "INTUITIVE",    
+                                                                                ]);
+                                                                            @endphp
+                                                                        @endif
+                                                                @endif
+                                                                @if($key == "VISUALVERBAL")
+                                                                    <br>
+                                                                        @if($result_part3Text == 'A')
+                                                                            <h6>How can visual learners help themselves?</h6>
+                                                                            <p>If you are a visual learner, look for diagrams, sketches, schematics, photographs, flow charts, or any other visual representation of verbal course material. Inquire with your instructor, consult reference books, and see if there are any videotapes or CD-ROM displays of the course material. Create a concept map by listing key points, enclosing them in boxes or circles, and connecting them with lines and arrows. Use a highlighter to colorcode your notes so that everything related to one topic is the same color.</p>
+                                                                            @php
+                                                                                App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                    "ls_result" => "VISUAL",    
+                                                                                ]);
+                                                                            @endphp
+                                                                        @else
+                                                                            <h6>How can verbal learners help themselves? </h6>
+                                                                            <p>Make your own summaries or outlines of course material. Working in groups can be especially beneficial: you gain understanding of material by hearing classmates explain it, and you learn even more when you explain it yourself.</p>
+                                                                            @php
+                                                                                App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                    "ls_result" => "VERBAL",    
+                                                                                ]);
+                                                                            @endphp
+                                                                        @endif  
+                                                                @endif
+                                                                @if($key == "SEQUENTIALGLOBAL")
+                                                                    <br>
+                                                                        @if($result_part4Text == 'A')
+                                                                            <h6>How can sequential learners help themselves? </h6>
+                                                                            <p>The majority of college courses are taught in a sequential order. However, if you are a sequential learner and your instructor jumps from topic to topic or skips steps, you may struggle to follow and remember. Ask the instructor to fill in the gaps, or do it yourself by consulting references. When studying, make an outline of the lecture material for yourself in logical order. This will save you time in the long run. You could also try to improve your global thinking skills by connecting each new topic you learn to something you already know. The more you can do this, the better your understanding of the subject will be.</p>
+                                                                            @php
+                                                                                App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                    "ls_result" => "SEQUENTIAL",    
+                                                                                ]);
+                                                                            @endphp
+                                                                        @else
+                                                                            <h6>How can global learners help themselves? </h6>
+                                                                            <p>If you are a global learner, simply acknowledging that you are not slow or stupid but simply function differently than the majority of your classmates can help a lot.4 However, there are some steps you can take that may help you get the big picture more quickly. Before you begin studying the first section of a chapter in a text, skim through the entire chapter to get an overview. This may take some time at first, but it will save you from going over individual parts later. Instead of spending a short amount of time on each subject every night, you may find it more productive to immerse yourself in individual subjects for extended periods of time. Try to connect the subject to what you already know, either by asking the instructor for assistance or by consulting references. Above all, don't lose faith in yourself; you'll eventually grasp the new material, and once you do, your understanding of how it relates to other topics and disciplines may allow you to apply it in ways that most sequential thinkers would never consider.</p>
+                                                                            @php
+                                                                                App\Models\User::where('id', auth()->user()->id)->update([
+                                                                                    "ls_result" => "GLOBAL",    
+                                                                                ]);
+                                                                            @endphp
+                                                                        @endif
+                                                                @endif
+                                                    @endforeach
                                                     
-                                                    <!-- According to the model on which the ILS is based, there are four dimensions of learning style, with each dimension having two opposite categories (such as active and reflective). The reported score for a dimension indicates your preference for one category or the other.
-                                                    <br>
-                                                    If your score for a dimension is 1 or 3, you are fairly well balanced on the two categories of that dimension, with only a mild preference for one or the other.
-                                                    <br>
-                                                    If your score for a dimension is 5 or 7, you have a moderate preference for one category of that dimension. You may learn less easily in an environment that fails to address that preference at least some of the time than you would in a more balanced environment.
-                                                    <br>
-                                                    If your score for a dimension is 9 or 11, you have a strong preference for one category of that dimension. You may have difficulty learning in an environment that fails to address that preference at least some of the time.
-                                                    <br>
-                                                    <br>
-                                                    We suggest that you print this page, so that when you look at the explanations of the different dimensions you will have a record of your preferences. When you close the page the information cannot be retrieved.
-                                                    <br>
-                                                    <br>
-                                                    For explanations of the dimensions and implications of your preferences, <a target="_blank" class="text-primary" href="https://www.engr.ncsu.edu/wp-content/uploads/drive/1WPAfj3j5o5OuJMiHorJ-lv6fON1C8kCN/styles.pdf">Click here</a>.
-                                                    <br>
-                                                    For more information about learning styles and the Index of Learning Styles, <a target="_blank" class="text-primary" href="https://educationdesignsinc.com/index-of-learning-styles/">Click here</a>. -->
                                                 </p>
                                             </div>
                                            

@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'isRemove',
         'isTakeLearningStyle',
+        'ls_result',
     ];
 
     protected $hidden = [

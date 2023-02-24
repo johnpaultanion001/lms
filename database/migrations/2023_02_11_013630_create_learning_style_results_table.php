@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('learning_style_results', function (Blueprint $table) {
             $table->id();
             $table->string('question_id');
+            $table->string('option_id')->nullable();
             $table->string('user_id');
             $table->string('answer');
             $table->timestamps();

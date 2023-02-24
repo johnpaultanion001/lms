@@ -229,7 +229,54 @@
                 </div>
             </div>
         </div>
-       
+        <div class="col-xl-6 col-md-6 mb-4 mx-auto bsit">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                Total Learning style Respondents for IT Students</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ls_bsit}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-fw fa-trophy fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-6 mb-4 mx-auto bscs">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                Total Learning style Respondents  for CS Students</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ls_bscs}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-fw fa-trophy fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">LEARNING STYLE</h6>
+                
+                </div>
+                  <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="myAreaChartLS"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     
@@ -243,9 +290,14 @@
         $('.genderBsit').hide();
         var data_it = JSON.parse(`<?php echo $data_results_bsit; ?>`);
         var chart_it = $("#myAreaChartIT");
+        
 
         var data_cs = JSON.parse(`<?php echo $data_results_bscs; ?>`);
         var chart_cs = $("#myAreaChartCS");
+        
+        var data_lsresult = JSON.parse(`<?php echo $data_results_ls; ?>`);
+        var chart_ls = $("#myAreaChartLS");
+        console.log(data_ls)
         
     
 
@@ -282,6 +334,33 @@
                 lineTension: 0.3,
                 backgroundColor: "rgba(78, 115, 223, 0.05)",
                 borderColor: "rgba(78, 115, 223, 1)",
+                pointRadius: 3,
+                pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointBorderColor: "rgba(78, 115, 223, 1)",
+                pointHoverRadius: 3,
+                pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                pointHitRadius: 10,
+                pointBorderWidth: 2,
+                
+            }
+            ]
+        };
+
+        var data_ls = {
+            labels: [
+                "ACTIVE","REFLECTIVE","SENSING","INTUITIVE",
+                "VISUAL","VERBAL","SEQUENTIAL","GLOBAL",
+            ],
+            datasets: [
+            {
+                label: "TOTAL:",
+                data: data_lsresult,
+
+                lineTension: 0.3,
+                backgroundColor: "rgba(78, 115, 223, 1)",
+
+                borderColor: "#111",
                 pointRadius: 3,
                 pointBackgroundColor: "rgba(78, 115, 223, 1)",
                 pointBorderColor: "rgba(78, 115, 223, 1)",
@@ -332,6 +411,12 @@
         var chart_bscs = new Chart(chart_cs, {
             type: "line",
             data: data_cs,
+            options: options
+        });
+
+        var chart_ls = new Chart(chart_ls, {
+            type: "bar",
+            data: data_ls,
             options: options
         });
 

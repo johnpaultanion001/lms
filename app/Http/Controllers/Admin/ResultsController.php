@@ -25,7 +25,7 @@ class ResultsController extends Controller
     }
 
     public function item_analysis(){
-        $categories = Category::where('isRemove', false)->with(['categoryQuestions' => function ($query) {
+        $categories = Category::where('isRemove', false)->whereNotIn('year', ['LEARNINGSTYLE'])->with(['categoryQuestions' => function ($query) {
             $query->inRandomOrder()
                 ->with(['questionOptions' => function ($query) {
                     $query->inRandomOrder();
@@ -33,8 +33,19 @@ class ResultsController extends Controller
         }])
             ->whereHas('categoryQuestions')
             ->get();
+        
+        $categoriesLS = Category::where('isRemove', false)->where('year', ['LEARNINGSTYLE'])->with(['categoryQuestions' => function ($query) {
+                $query->inRandomOrder()
+                    ->with(['questionOptions' => function ($query) {
+                        $query->inRandomOrder();
+                    }]);
+            }])
+                ->whereHas('categoryQuestions')
+                ->get();
+        
+        $category_first =  $categories->first();
 
-        return view('admin.results.item_analysis', compact('categories'));
+        return view('admin.results.item_analysis', compact('categories','categoriesLS','category_first'));
     }
 
     

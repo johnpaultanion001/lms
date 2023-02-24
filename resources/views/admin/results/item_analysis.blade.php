@@ -31,6 +31,10 @@
                         <button class="btn btn-primary select_category m-1" category="{{$category->id}}">{{$category->name}}</button>
                         
                     @endforeach
+                    @foreach($categoriesLS as $category)
+                        <button class="btn btn-primary select_category m-1" category="{{$category->id}}">{{$category->name}}</button>
+                        
+                    @endforeach
                 </div>
                
             </div>
@@ -38,9 +42,8 @@
 
         </div>
         <div class="card-body p-0 text-dark">
-        <input type="hidden" readonly value="{{$categories->count()}}" id="total_category">
             @foreach($categories as $category)
-                <div class="card mb-3" id="category{{ $category->id }}">
+                <div class="card mb-3 categories" id="category{{ $category->id }}">
                     <div class="card-header text-white font-weight-bold bg-primary">{{ $category->name }}</div>
                         <div class="card-body">
                             @foreach($category->categoryQuestions as $question)
@@ -74,6 +77,43 @@
                         </div>
                 </div>
             @endforeach
+            @foreach($categoriesLS as $category)
+                <div class="card mb-3 categories" id="category{{ $category->id }}">
+                    <div class="card-header text-white font-weight-bold bg-primary">{{ $category->name }}</div>
+                        <div class="card-body">
+                            @foreach($category->categoryQuestions as $question)
+                                <div class="card @if(!$loop->last)mb-3 @endif">
+                                    <div class="card-header font-weight-bold">{{ $question->question_text }}</div>
+                
+                                    <div class="card-body">
+                                        <input type="hidden" name="questions[{{ $question->id }}]" value="">
+                                            <ul class="list-group">
+                                            @foreach($question->questionOptions as $option)
+                                                @php
+                                                    $response = App\Models\LearningStyleResult::where('question_id',$question->id)
+                                                                    ->where('answer',$option->value_learning_style)->count();
+                                                    
+                                                @endphp
+                                                <li class="list-group-item">{{ $option->option_text }} 
+                                                    <br> {{$response}} Responses
+                                                </li>
+                                                    
+                                            @endforeach
+                                            </ul>
+
+                                        @if($errors->has("questions.$question->id"))
+                                            <span style="margin-top: .25rem; font-size: 80%; color: #e3342f;" role="alert">
+                                                <strong>{{ $errors->first("questions.$question->id") }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                </div>
+            @endforeach
+            <input type="hidden" readonly id="first_category_id" value="{{$category_first->id}}">
+
         </div>
     </div>
 
@@ -84,21 +124,14 @@
 <script>
     $(document).ready(function()
     {
-        var total = parseFloat($('#total_category').val()) + 1;
-        questions(1);
-        function questions($id) {
-            for(var i = 1; i < total; i++)
-            {
-                console.log(i);
-                $('#category'+i).hide();
-                $('#category'+$id).show();
-            } 
-        }
-
+        $('.categories').hide();
+        $('#category'+$('#first_category_id').val()).show();
+        
         
         $('.select_category').on('click', function() {
            var id = $(this).attr('category');
-           questions(id);
+           $('.categories').hide();
+           $('#category'+id).show();
         });
     }); 
 </script>

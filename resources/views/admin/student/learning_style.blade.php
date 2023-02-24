@@ -39,7 +39,7 @@
                     Your response data and learning style profile are not stored or sent to anyone other than you. They cannot be recovered once you have submitted the completed form and received the results.
                     <br><br>
                     DIRECTIONS: <br>
-                    Please provide us with your first and last name, which will be printed on the report of results that will be returned to you. (Note the Privacy Policy above if you are concerned about confidentiality.) You may only choose one answer for each question, and you must answer all questions before you can submit the form. If both answers to a question seem to apply to you, choose the one that applies more frequently throughout all your courses. When you have selected answers to all 44 questions, click on the "Submit" button at the end of the form.
+                    You may only choose one answer for each question, and you must answer all questions before you can submit the form. If both answers to a question seem to apply to you, choose the one that applies more frequently throughout all your courses. When you have selected answers to all 44 questions, click on the "Submit" button at the end of the form.
 
                     </p>
                     <div class="card-body">

@@ -34,6 +34,9 @@ class AdminController extends Controller
         $r_bsit = Result::where('course', 'BSIT')->count();
         $r_bscs = Result::where('course', 'BSCS')->count();
 
+        $ls_bsit = User::where('course', 'BSIT')->where('isTakeLearningStyle', 1)->count();
+        $ls_bscs = User::where('course', 'BSCS')->where('isTakeLearningStyle', 1)->count();
+
         $users_bsit = User::where('course', 'BSIT')->count();
         $users_bscs = User::where('course', 'BSCS')->count();
 
@@ -100,16 +103,30 @@ class AdminController extends Controller
             $result_data_bscs['label'][] = $row->category;
             $result_data_bscs['data'][] =  $row->points;
         }
+        $user_ls = User::latest()->get();
+        $result_ls = [
+            $user_ls->where('ls_result','ACTIVE')->count(),
+            $user_ls->where('ls_result','REFLECTIVE')->count(),
+            $user_ls->where('ls_result','SENSING')->count(),
+            $user_ls->where('ls_result','INTUITIVE')->count(),
+            $user_ls->where('ls_result','VISUAL')->count(),
+            $user_ls->where('ls_result','VERBAL')->count(),
+            $user_ls->where('ls_result','SEQUENTIAL')->count(),
+            $user_ls->where('ls_result','GLOBAL')->count(),
+        ];
 
         $data_results_bscs = json_encode($result_data_bscs);
         $failed_bscs = json_encode($failed_bscs);
         $passed_bscs = json_encode($passed_bscs);
 
+        $data_results_ls = json_encode($result_ls);
+
+        
         
 
         return view('admin.dashboard.dashboard', compact('users','categories','questions','usersm',
         'usersf','r_bsit','r_bscs','data_results_bsit','failed_bsit','passed_bsit',
-        'data_results_bscs','failed_bscs','passed_bscs','usersfbsit','usersmbsit','usersfbscs','usersmbscs'));
+        'data_results_bscs','failed_bscs','passed_bscs','usersfbsit','usersmbsit','usersfbscs','usersmbscs','data_results_ls','ls_bsit','ls_bscs'));
         
     }
 }
